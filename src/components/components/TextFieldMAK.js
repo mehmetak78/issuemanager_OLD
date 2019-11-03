@@ -1,8 +1,6 @@
 import React from 'react';
-import {Grid, TextField} from "@material-ui/core";
-import {makeStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-
+import {Grid, makeStyles, TextField} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -13,28 +11,29 @@ const useStyles = makeStyles(theme => ({
 
 const TextFieldMAK = props => {
     const classes = useStyles();
+    const {field} = props;
     return (
-        <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
+        !field.hidden ?
+        <Grid item {...field.size}>
             <TextField
-                {...props}
+                {...field}
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
                 fullWidth
                 color="primary"
+                onChange={props.onChange}
             />
             {props.children}
         </Grid>
+            :
+            null
     );
 };
 
 TextFieldMAK.propTypes = {
-    label: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    field: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
 };
 
 export default TextFieldMAK;
-
