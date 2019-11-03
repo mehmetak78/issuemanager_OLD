@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Container, makeStyles} from "@material-ui/core";
+import {Container, Grid, makeStyles} from "@material-ui/core";
 
-import GridMAK from "../components/GridMAK";
-import AddResetButtonsMAK from "../components/AddResetButtonsMAK";
-import SubmitButtonMAK from "../components/SubmitButtonMAK";
+
+import AddResetButtonsMAK from "./AddResetButtonsMAK";
+import SubmitButtonMAK from "./SubmitButtonMAK";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
@@ -42,9 +42,15 @@ const FormMAK = props => {
                         <Typography variant="h1" gutterBottom>
                             {props.label}
                         </Typography>
-                        <GridMAK>
+                        <Grid
+                            container
+                            direction="row"
+                            justify="flex-start"
+                            alignItems="center"
+                            spacing={1}
+                        >
                             {props.children}
-                        </GridMAK>
+                        </Grid>
                     </CardContent>
                     <CardActions className={classes.cardAction}>
                         {action(props.type)}

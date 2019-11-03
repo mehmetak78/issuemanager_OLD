@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import TextFieldMAK from "../components/TextFieldMAK";
 
-import FormMAK, {ADD_RESET} from "./FormMAK";
+import FormMAK, {ADD_RESET} from "../components/FormMAK";
 
 
 const AddUserForm = () => {

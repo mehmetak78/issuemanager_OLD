@@ -1,22 +1,20 @@
 import React from 'react';
-import {TextField} from "@material-ui/core";
+import {Grid, TextField} from "@material-ui/core";
 import {makeStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import GridItemMAK from "./GridItemMAK";
+
+
+const useStyles = makeStyles(theme => ({
+    textField: {
+        //      marginLeft: theme.spacing(1),
+        //    marginRight: theme.spacing(1),
+    },
+}));
 
 const TextFieldMAK = props => {
-
-    const useStyles = makeStyles(theme => ({
-        textField: {
-            //      marginLeft: theme.spacing(1),
-            //    marginRight: theme.spacing(1),
-        },
-    }));
-
     const classes = useStyles();
-
     return (
-        <GridItemMAK>
+        <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
             <TextField
                 {...props}
                 className={classes.textField}
@@ -26,7 +24,7 @@ const TextFieldMAK = props => {
                 color="primary"
             />
             {props.children}
-        </GridItemMAK>
+        </Grid>
     );
 };
 
