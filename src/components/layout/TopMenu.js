@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment, useState, useRef} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import SaveIcon from '@material-ui/icons/Save';
+import CancelIcon from '@material-ui/icons/Cancel';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -26,6 +30,10 @@ const useStyles = makeStyles(theme => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
+    },
+    actionsText: {
+        paddingLeft: theme.spacing(15),
+        paddingRight: theme.spacing(1),
     },
     title: {
         display: 'none',
@@ -90,6 +98,98 @@ const TopMenu = props => {
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const [issueState, setIssueState] = useState("NO_ISSUE");
+    const [searchEnabled, setSearchEnabled] = useState(true);
+
+
+    const searchText = useRef('');
+
+    const handleAddIssue = (e) => {
+        e.preventDefault();
+        setIssueState("INSERTING_ISSUE");
+        setSearchEnabled(false);
+    };
+    const handleEditIssue = (e) => {
+        e.preventDefault();
+        setIssueState("EDITING_ISSUE");
+        setSearchEnabled(false);
+    };
+    const handleSaveIssue = (e) => {
+        e.preventDefault();
+        setIssueState("FOUND_ISSUE");
+        console.log(searchText.current.value);
+        setSearchEnabled(true);
+    };
+    const handleCancelAddIssue = (e) => {
+        e.preventDefault();
+        setIssueState("NO_ISSUE");
+        setSearchEnabled(true);
+    };
+    const handleCancelEditIssue = (e) => {
+        e.preventDefault();
+        setIssueState("FOUND_ISSUE");
+        setSearchEnabled(true);
+    };
+
+    const handleSearchChange = (e) => {
+        e.preventDefault();
+        setIssueState("FOUND_ISSUE");
+        setSearchEnabled(true);
+    };
+
+
+    const insertButtons = () => {
+        // eslint-disable-next-line default-case
+        switch (issueState) {
+            case "NO_ISSUE":
+                return (
+                    <Fragment>
+                        <Typography>{issueState}</Typography>
+                        <IconButton color="inherit" onClick={handleAddIssue}>
+                            <AddIcon/>
+                        </IconButton>
+                    </Fragment>
+                );
+            case "FOUND_ISSUE":
+                return (
+                    <Fragment>
+                        <Typography>{issueState}</Typography>
+                        <IconButton color="inherit" onClick={handleAddIssue}>
+                            <AddIcon/>
+                        </IconButton>
+                        <IconButton color="inherit" onClick={handleEditIssue}>
+                            <EditIcon/>
+                        </IconButton>
+                    </Fragment>
+                );
+            case "INSERTING_ISSUE":
+                return (
+                    <Fragment>
+                        <Typography>{issueState}</Typography>
+                        <IconButton color="inherit" onClick={handleSaveIssue}>
+                            <SaveIcon/>
+                        </IconButton>
+                        <IconButton color="inherit" onClick={handleCancelAddIssue}>
+                            <CancelIcon/>
+                        </IconButton>
+                    </Fragment>
+                );
+            case "EDITING_ISSUE":
+                return (
+                    <Fragment>
+                        <Typography>{issueState}</Typography>
+                        <IconButton color="inherit" onClick={handleSaveIssue}>
+                            <SaveIcon/>
+                        </IconButton>
+                        <IconButton color="inherit" onClick={handleCancelEditIssue}>
+                            <CancelIcon/>
+                        </IconButton>
+                    </Fragment>
+                );
+        }
+    };
+
 
     const handleProfileMenuOpen = event => {
         setAnchorEl(event.currentTarget);
@@ -179,21 +279,26 @@ const TopMenu = props => {
                         <MenuIcon/>
 
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Issue Manager
+                    <Typography variant={"body1"} className={classes.actionsText}>
+                        IssueState :
                     </Typography>
+                    {insertButtons()}
+
                     <div className={classes.grow}/>
-                    <div className={classes.search}>
+                    <div className={classes.search} >
                         <div className={classes.searchIcon}>
-                            <SearchIcon/>
+                            <SearchIcon />
                         </div>
                         <InputBase
+                            onChange={handleSearchChange}
                             placeholder="Search…"
+                            disabled={!searchEnabled}
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
                             }}
                             inputProps={{'aria-label': 'search'}}
+                            inputRef={searchText}
                         />
                     </div>
 

@@ -15,13 +15,31 @@ import IconPersonAdd from '@material-ui/icons/PersonAdd';
 
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
+import SpeedDialMAK from "../components/SpeedDialMAK";
+
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import SaveIcon from '@material-ui/icons/Save';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
-     //   marginTop: "10px",
+        //   marginTop: "10px",
 
+    },
+
+    buttonContainer: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+    },
+    fab: {
+        margin: theme.spacing(1),
+    },
+    extendedIcon: {
+        marginRight: theme.spacing(1),
     },
     navlink: {
         textDecoration: "none",
@@ -79,6 +97,16 @@ const LeftMenu = props => {
         }
     }, [leftMenuCollapsed]);
 
+    const handleAddClick = () => {
+        console.log("Add Button Clicked")
+    };
+    const handleEditClick = () => {
+        console.log("Edit Button Clicked")
+    };
+    const handleSaveClick = () => {
+        console.log("Save Button Clicked")
+    };
+
     return (
         <div className={classes.root}>
             <Drawer
@@ -96,20 +124,24 @@ const LeftMenu = props => {
                 open={open}
             >
                 <List>
-                    <NavLink to="/home" className={classes.navlink}  >
+                    <NavLink to="/home" className={classes.navlink}>
                         <ListItem button key={"FirstPage"} name={"FirstPage"}>
                             <ListItemIcon><IconHome color="primary"/></ListItemIcon>
                             <ListItemText primary="Ana Sayfa"/>
                         </ListItem>
                     </NavLink>
 
-                    <NavLink to="/addUser"  className={classes.navlink}>
+                    <NavLink to="/addUser" className={classes.navlink}>
                         <ListItem button key={"SecondPage"}>
                             <ListItemIcon><IconPersonAdd color="primary"/></ListItemIcon>
                             <ListItemText primary="Kullanıcı Ekle"/>
                         </ListItem>
                     </NavLink>
+
                 </List>
+                <div className={classes.buttonContainer}>
+                    <SpeedDialMAK/>
+                </div>
             </Drawer>
         </div>
     );
