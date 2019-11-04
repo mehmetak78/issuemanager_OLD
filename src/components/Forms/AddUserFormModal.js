@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.paper,
         border: '2px solid green',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        paddingBottom: theme.spacing(2),
     },
 }));
 
@@ -41,7 +41,6 @@ export default function SimpleModal(props) {
 
     return (
         <div>
-
             <Modal
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
