@@ -19,7 +19,8 @@ const ResetButtonMAK = props => {
             variant="contained"
             color="secondary"
             fullWidth
-                className={classes.button}
+            className={classes.button}
+            disabled={props.disabled}
         >
             {props.label}
         </Button>
@@ -28,6 +29,11 @@ const ResetButtonMAK = props => {
 
 ResetButtonMAK.propTypes = {
     label: PropTypes.string.isRequired,
+};
+
+
+ResetButtonMAK.defaultProps = {
+    disabled: false
 };
 
 export default ResetButtonMAK;

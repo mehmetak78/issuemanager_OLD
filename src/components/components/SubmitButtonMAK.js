@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core";
+import ResetButtonMAK from "./ResetButtonMAK";
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,7 +20,8 @@ const SubmitButtonMAK = props => {
             variant="contained"
             color="primary"
             fullWidth
-                className={classes.button}
+            disabled={props.disabled}
+            className={classes.button}
         >
             {props.label}
         </Button>
@@ -28,6 +30,10 @@ const SubmitButtonMAK = props => {
 
 SubmitButtonMAK.propTypes = {
     label: PropTypes.string.isRequired,
+};
+
+SubmitButtonMAK.defaultProps = {
+    disabled: false
 };
 
 export default SubmitButtonMAK;

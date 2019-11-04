@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2573292-3164-44db-8268-a23878944f22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/components/SpeedDialMAK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Forms/AddUserFormModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/components/CircularIndeterminate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/db/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/errorUtil.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/LeftMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/LeftMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/TopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/AddUserForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/AddUserForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/AddResetButtonsMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/AddResetButtonsMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/FormMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/FormMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/ResetButtonMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/ResetButtonMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/SubmitButtonMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/SubmitButtonMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,10 +49,10 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/components" />
+      <recent name="$PROJECT_DIR$/src/db" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/Forms" />
       <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/components/components/Forms" />
-      <recent name="$PROJECT_DIR$/src/components/pages" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/components" />
@@ -91,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572677850915</updated>
-      <workItem from="1572677852025" duration="52331000" />
+      <workItem from="1572677852025" duration="63659000" />
     </task>
     <task id="LOCAL-00001" summary="After Form Structure">
       <created>1572781788413</created>
@@ -114,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572812109392</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="After Top Menu Icons">
+      <created>1572820657926</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1572820657926</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +147,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="After Form Structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="After Form Structure" />
+    <MESSAGE value="After Top Menu Icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="After Top Menu Icons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

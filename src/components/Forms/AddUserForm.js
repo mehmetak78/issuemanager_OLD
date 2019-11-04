@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 
 import FormMAK, {ADD_RESET} from "../components/FormMAK";
 
 import TextFieldMAK from "../components/TextFieldMAK";
+import {addData} from "../../db";
+import {Container} from "@material-ui/core";
+
+
 
 
 const AddUserForm = () => {
@@ -11,6 +15,7 @@ const AddUserForm = () => {
                                          firstName: "",
                                          lastName: "",
                                      });
+    const [loading, setLoading] = useState(false);
     const fields = {
         userName: {
             name: "userName",
@@ -45,10 +50,19 @@ const AddUserForm = () => {
         setUser({...user, [e.target.name]: e.target.value});
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user);
+        setLoading(true);
+        const res = await addData(user, "/users");
+        if (res.error) {
+            console.log(res.error);
+        }
+        else {
+            console.log(res.data);
+        }
+        setLoading(false);
     };
+
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -57,20 +71,22 @@ const AddUserForm = () => {
     };
 
     return (
-        <FormMAK type={ADD_RESET} label="Add User" handleSubmit={handleSubmit} handleReset={handleReset}>
-            <TextFieldMAK
-                field={fields.userName}
-                onChange={handleChange}
-            />
-            <TextFieldMAK
-                field={fields.firstName}
-                onChange={handleChange}
-            />
-            <TextFieldMAK
-                field={fields.lastName}
-                onChange={handleChange}
-            />
-        </FormMAK>
+        <Container>
+            <FormMAK type={ADD_RESET} label="Add User" handleSubmit={handleSubmit} handleReset={handleReset} loading={loading}>
+                <TextFieldMAK
+                    field={fields.userName}
+                    onChange={handleChange}
+                />
+                <TextFieldMAK
+                    field={fields.firstName}
+                    onChange={handleChange}
+                />
+                <TextFieldMAK
+                    field={fields.lastName}
+                    onChange={handleChange}
+                />
+            </FormMAK>
+        </Container>
     );
 };
 

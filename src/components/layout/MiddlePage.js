@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PageNotFound from "../pages/PageNotFound";
 import Home from "../pages/Home";
 import AddUserForm from "../Forms/AddUserForm";
+import AddUserFormModal from "../Forms/AddUserFormModal";
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +26,7 @@ const MiddlePage = props => {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/home" component={Home}/>
-                <Route exact path="/addUser" component={AddUserForm}/>
+                <Route exact path="/addUser" component={AddUserFormModal}/>
                 <Route component={PageNotFound}/>
             </Switch>
         </main>
