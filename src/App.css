@@ -1,6 +1,14 @@
 .App {
+  display: flex!important;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
   text-align: center;
 }
-.Main {
-  display: flex;
+
+.TopMenu {
+}
+
+.MiddlePage {
+  flex-grow:1
 }

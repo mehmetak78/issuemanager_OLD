@@ -3,13 +3,14 @@ import {Provider} from "react-redux"
 import reduxStore from "./redux/store"
 import './App.css';
 import TopMenu from "./components/layout/TopMenu";
-import LeftMenu from "./components/layout/LeftMenu";
+
 import MiddlePage from "./components/layout/MiddlePage";
 
 import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 
 import {BrowserRouter} from "react-router-dom";
+
 
 function App() {
     const theme = createMuiTheme({
@@ -59,9 +60,10 @@ function App() {
             <Provider store={reduxStore}>
                 <BrowserRouter>
                     <div className="App">
-                        <TopMenu/>
-                        <div className="Main">
-                            <LeftMenu/>
+                        <div className="TopMenu">
+                            <TopMenu/>
+                        </div>
+                        <div className="MiddlePage">
                             <MiddlePage/>
                         </div>
                     </div>

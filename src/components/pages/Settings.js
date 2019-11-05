@@ -5,11 +5,7 @@ import SpeedDialMAK from "../components/SpeedDialMAK";
 const Home = () => {
     return (
         <div >
-            <h1>Home age</h1>
-            <h1>Home age</h1>
-            <h1>Home age</h1>
-            <h1>Home age</h1>
-            <SpeedDialMAK/>
+            <h1>Settings</h1>
         </div>
     );
 };

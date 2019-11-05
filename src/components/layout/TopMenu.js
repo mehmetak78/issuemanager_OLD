@@ -8,7 +8,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
+
 import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
@@ -20,8 +20,19 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
 
+import {NavLink} from "react-router-dom";
 import {connect} from "react-redux"
 import {toggleLeftMenu} from "../../redux/actions/layoutActions";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+
+
+import IconHome from '@material-ui/icons/Home';
+import SettingsIcon from '@material-ui/icons/Settings';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +51,10 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+    },
+    navlink: {
+        textDecoration: "none",
+        color: "inherit"
     },
     search: {
         position: 'relative',
@@ -219,8 +234,23 @@ const TopMenu = props => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+
+            <List>
+                <NavLink to="/settings" className={classes.navlink} >
+                    <ListItem button key={"SettingsPage"} name={"SettingsPage"} onClick={handleMenuClose}>
+                        <ListItemIcon><SettingsIcon color="primary"/></ListItemIcon>
+                        <ListItemText primary="Settings"/>
+                    </ListItem>
+                </NavLink>
+                <NavLink to="/admin" className={classes.navlink} >
+                    <ListItem button key={"AdminPage"} name={"AdminPage"} onClick={handleMenuClose}>
+                        <ListItemIcon><SupervisorAccountIcon color="primary"/></ListItemIcon>
+                        <ListItemText primary="Admin"/>
+                    </ListItem>
+                </NavLink>
+
+            </List>
+
         </Menu>
     );
 
@@ -274,20 +304,20 @@ const TopMenu = props => {
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={() => props.toggleLeftMenu()}
+
                     >
-                        <MenuIcon/>
+                        <NavLink to={"home"} className={classes.navlink} >
+                            <IconHome/>
+                        </NavLink>
 
                     </IconButton>
-                    <Typography variant={"body1"} className={classes.actionsText}>
-                        IssueState :
-                    </Typography>
+
                     {insertButtons()}
 
                     <div className={classes.grow}/>
-                    <div className={classes.search} >
+                    <div className={classes.search}>
                         <div className={classes.searchIcon}>
-                            <SearchIcon />
+                            <SearchIcon/>
                         </div>
                         <InputBase
                             onChange={handleSearchChange}

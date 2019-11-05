@@ -9,7 +9,7 @@ import {Container} from "@material-ui/core";
 
 
 
-const AddUserForm = () => {
+const AddUserForm = (props) => {
     const [user, setUser] = useState({
                                          userName: "",
                                          firstName: "",
@@ -61,6 +61,7 @@ const AddUserForm = () => {
             console.log(res.data);
         }
         setLoading(false);
+        props.history.push("/settings");
     };
 
 
@@ -68,6 +69,7 @@ const AddUserForm = () => {
         e.preventDefault();
         setUser({userName: "", firstName: "", lastName: ""});
         console.log("Reset Form")
+        props.history.push("/admin");
     };
 
     return (

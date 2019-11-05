@@ -12,22 +12,12 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        transform: 'translateZ(0px)',
-
-    },
-
-    speedDial: {
-        position: 'relative',
-    //    marginTop: "40px",
-        '&.MuiSpeedDial-directionUp, &.MuiSpeedDial-directionLeft': {
-
-        },
-        '&.MuiSpeedDial-directionDown, &.MuiSpeedDial-directionRight': {
-
-        },
+        zIndex: "999",
+        position: "fixed",
+        bottom:"5%",
+        right:"5%"
     },
 }));
-
 
 const actions = [
     {icon: <FileCopyIcon/>, name: 'Copy'},
@@ -39,6 +29,7 @@ export default function SpeedDialMAK() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
+    let subMenuClicked = false;
 
     const handleSubButtonClick  = (name) => {
         switch(name) {
@@ -48,8 +39,11 @@ export default function SpeedDialMAK() {
             case "Like": console.log("Like Clicked"); break;
             default:console.log("Wrong Button Clicked");
         }
+        subMenuClicked = true;
         handleClose();
     };
+
+
 
     const handleClose = () => {
         setOpen(false);
@@ -60,21 +54,24 @@ export default function SpeedDialMAK() {
     };
 
     const handleClick = () => {
-        console.log("Main Clicked")
+        if (!subMenuClicked) {
+            console.log("Main Clicked")
+        }
+        else {
+            subMenuClicked = false;
+        }
     };
 
     return (
         <div className={classes.root}>
             <SpeedDial
-                ariaLabel="SpeedDial example"
-                className={classes.speedDial}
-
+                ariaLabel="SpeedDial"
                 icon={<ShareIcon/>}
                 onClose={handleClose}
                 onOpen={handleOpen}
                 onClick={handleClick}
                 open={open}
-                direction="up"
+                direction="left"
             >
                 {actions.map(action => (
                     <SpeedDialAction
