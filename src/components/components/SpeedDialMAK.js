@@ -2,11 +2,9 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 
 import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 import SaveIcon from '@material-ui/icons/Save';
-import PrintIcon from '@material-ui/icons/Print';
 import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
@@ -14,8 +12,8 @@ const useStyles = makeStyles(theme => ({
     root: {
         zIndex: "999",
         position: "fixed",
-        bottom:"5%",
-        right:"5%"
+        bottom:"30px",
+        right:"30px"
     },
 }));
 

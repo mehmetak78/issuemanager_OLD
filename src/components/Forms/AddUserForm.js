@@ -1,12 +1,9 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState} from 'react';
 
 import FormMAK, {ADD_RESET} from "../components/FormMAK";
 
 import TextFieldMAK from "../components/TextFieldMAK";
 import {addData} from "../../db";
-import {Container} from "@material-ui/core";
-
-
 
 
 const AddUserForm = (props) => {
@@ -56,12 +53,11 @@ const AddUserForm = (props) => {
         const res = await addData(user, "/users");
         if (res.error) {
             console.log(res.error);
-        }
-        else {
+        } else {
             console.log(res.data);
         }
         setLoading(false);
-        props.history.push("/settings");
+        props.history.push("/admin");
     };
 
 
@@ -73,22 +69,21 @@ const AddUserForm = (props) => {
     };
 
     return (
-        <Container>
-            <FormMAK type={ADD_RESET} label="Add User" handleSubmit={handleSubmit} handleReset={handleReset} loading={loading}>
-                <TextFieldMAK
-                    field={fields.userName}
-                    onChange={handleChange}
-                />
-                <TextFieldMAK
-                    field={fields.firstName}
-                    onChange={handleChange}
-                />
-                <TextFieldMAK
-                    field={fields.lastName}
-                    onChange={handleChange}
-                />
-            </FormMAK>
-        </Container>
+        <FormMAK type={ADD_RESET} label="Add User" handleSubmit={handleSubmit} handleReset={handleReset}
+                 loading={loading}>
+            <TextFieldMAK
+                field={fields.userName}
+                onChange={handleChange}
+            />
+            <TextFieldMAK
+                field={fields.firstName}
+                onChange={handleChange}
+            />
+            <TextFieldMAK
+                field={fields.lastName}
+                onChange={handleChange}
+            />
+        </FormMAK>
     );
 };
 

@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import "../../App.css"
 import SpeedDialMAK from "../components/SpeedDialMAK";
+import {Card, makeStyles} from "@material-ui/core";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles(theme => ({
+    card: {
+        height: "100%"
+    },
+}));
 
 const Home = () => {
+    const classes = useStyles();
     return (
-        <div >
-            <h1>Home age</h1>
-            <h1>Home age</h1>
-            <h1>Home age</h1>
-            <h1>Home age</h1>
-            <SpeedDialMAK/>
-        </div>
+        <Fragment>
+            <Card className={classes.card}>
+                <CardContent>
+                    <Typography variant="h1">
+                        Home
+                    </Typography>
+                    <SpeedDialMAK/>
+                </CardContent>
+
+            </Card>
+
+        </Fragment>
     );
 };
 

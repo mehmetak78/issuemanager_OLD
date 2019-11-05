@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Container, Grid, makeStyles} from "@material-ui/core";
+import {Grid, makeStyles} from "@material-ui/core";
 
 
 import AddResetButtonsMAK from "./AddResetButtonsMAK";
@@ -15,15 +15,10 @@ export const ADD_RESET = "ADD_RESET";
 
 const useStyles = makeStyles(theme => ({
     card: {
-        width: "100%",
-        marginTop: "20px",
-        flexGrow: 1,
-    },
-    label: {
-        textAlign: "center"
+        height: "100%"
     },
     cardAction: {
-        padding: "40px",
+        padding: theme.spacing(3),
     }
 }));
 
@@ -39,10 +34,11 @@ const action = (type, disabled) => {
 const FormMAK = props => {
     const classes = useStyles();
     return (
-        <form onSubmit={props.handleSubmit} onReset={props.handleReset}>
-            <Card className={classes.card}>
+        <Card className={classes.card}>
+            <form onSubmit={props.handleSubmit} onReset={props.handleReset}>
+
                 <CardContent>
-                    <Typography variant="h1" gutterBottom className={classes.label}>
+                    <Typography variant="h1" className={classes.label}>
                         {props.label}
                     </Typography>
                     <Grid
@@ -59,8 +55,9 @@ const FormMAK = props => {
                     {action(props.type, props.loading)}
                 </CardActions>
                 {props.loading ? <CircularIndeterminate/> : null}
-            </Card>
-        </form>
+            </form>
+        </Card>
+
     );
 };
 

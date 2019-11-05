@@ -10,6 +10,7 @@ import {createMuiTheme} from '@material-ui/core/styles';
 import {ThemeProvider} from '@material-ui/styles';
 
 import {BrowserRouter} from "react-router-dom";
+import ContainerMAK from "./components/components/ContainerMAK";
 
 
 function App() {
@@ -64,7 +65,9 @@ function App() {
                             <TopMenu/>
                         </div>
                         <div className="MiddlePage">
+                            <ContainerMAK>
                             <MiddlePage/>
+                            </ContainerMAK>
                         </div>
                     </div>
                 </BrowserRouter>

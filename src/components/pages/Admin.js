@@ -1,6 +1,6 @@
 import React from 'react';
 import "../../App.css"
-import {Card, Container, Grid, makeStyles} from "@material-ui/core";
+import {Card, Grid, makeStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import {NavLink} from "react-router-dom";
@@ -11,13 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles(theme => ({
     card: {
-        width: "100%",
-        marginTop: "20px",
-        flexGrow: 1,
-    },
-    header: {
-        textAlign: "center",
-        marginBottom: "40px"
+        height: "100%"
     },
     navlink: {
         textDecoration: "none",
@@ -32,41 +26,40 @@ const useStyles = makeStyles(theme => ({
 const Admin = () => {
     const classes = useStyles();
     return (
-        <Container>
-            <Card className={classes.card}>
-                <CardContent className={classes.cardContent}>
-                    <Typography variant="h1" gutterBottom className={classes.header}>
-                        Administrator
-                    </Typography>
-                    <Grid
-                        container
-                        direction="row"
-                        justify="flex-start"
-                        alignItems="center"
-                        spacing={1}
-                    >
-                        <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
-                            <NavLink to="/addUser" className={classes.navlink} >
-                                <ListItem button key={"AddUserPage"} name={"AddUserPage"} >
-                                    <ListItemIcon><PersonAddIcon color="primary"/></ListItemIcon>
-                                    <ListItemText primary="Add User"/>
-                                </ListItem>
-                            </NavLink>
-                        </Grid>
-                        <Grid item xs={6} sm={6} md={4} lg={3} xl={3}>
-                            <NavLink to="/addUser" className={classes.navlink} >
-                                <ListItem button key={"AddUserPage"} name={"AddUserPage"} >
-                                    <ListItemIcon><PersonAddIcon color="primary"/></ListItemIcon>
-                                    <ListItemText primary="Add User"/>
-                                </ListItem>
-                            </NavLink>
-                        </Grid>
-
+        <Card className={classes.card}>
+            <CardContent >
+                <Typography variant="h1" >
+                    Administrator
+                </Typography>
+                <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                    spacing={1}
+                >
+                    <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
+                        <NavLink to="/addUser" className={classes.navlink}>
+                            <ListItem button key={"AddUserPage"} name={"AddUserPage"}>
+                                <ListItemIcon><PersonAddIcon color="primary"/></ListItemIcon>
+                                <ListItemText primary="Add User"/>
+                            </ListItem>
+                        </NavLink>
+                    </Grid>
+                    <Grid item xs={6} sm={6} md={4} lg={3} xl={3}>
+                        <NavLink to="/addUser" className={classes.navlink}>
+                            <ListItem button key={"AddUserPage"} name={"AddUserPage"}>
+                                <ListItemIcon><PersonAddIcon color="primary"/></ListItemIcon>
+                                <ListItemText primary="Add User"/>
+                            </ListItem>
+                        </NavLink>
                     </Grid>
 
-                </CardContent>
-            </Card>
-        </Container>
+                </Grid>
+
+            </CardContent>
+        </Card>
+
     );
 };
 
