@@ -155,51 +155,52 @@ const TopMenu = props => {
 
 
     const insertButtons = () => {
+
         // eslint-disable-next-line default-case
         switch (issueState) {
             case "NO_ISSUE":
                 return (
                     <Fragment>
-                        <Typography>{issueState}</Typography>
                         <IconButton color="inherit" onClick={handleAddIssue}>
                             <AddIcon/>
                         </IconButton>
+                        <Typography>{issueState}</Typography>
                     </Fragment>
                 );
             case "FOUND_ISSUE":
                 return (
                     <Fragment>
-                        <Typography>{issueState}</Typography>
                         <IconButton color="inherit" onClick={handleAddIssue}>
                             <AddIcon/>
                         </IconButton>
                         <IconButton color="inherit" onClick={handleEditIssue}>
                             <EditIcon/>
                         </IconButton>
+                        <Typography>{issueState}</Typography>
                     </Fragment>
                 );
             case "INSERTING_ISSUE":
                 return (
                     <Fragment>
-                        <Typography>{issueState}</Typography>
                         <IconButton color="inherit" onClick={handleSaveIssue}>
                             <SaveIcon/>
                         </IconButton>
                         <IconButton color="inherit" onClick={handleCancelAddIssue}>
                             <CancelIcon/>
                         </IconButton>
+                        <Typography>{issueState}</Typography>
                     </Fragment>
                 );
             case "EDITING_ISSUE":
                 return (
                     <Fragment>
-                        <Typography>{issueState}</Typography>
                         <IconButton color="inherit" onClick={handleSaveIssue}>
                             <SaveIcon/>
                         </IconButton>
                         <IconButton color="inherit" onClick={handleCancelEditIssue}>
                             <CancelIcon/>
                         </IconButton>
+                        <Typography>{issueState}</Typography>
                     </Fragment>
                 );
         }
@@ -309,7 +310,6 @@ const TopMenu = props => {
                         <NavLink to={"home"} className={classes.navlink} >
                             <IconHome/>
                         </NavLink>
-
                     </IconButton>
 
                     {insertButtons()}
