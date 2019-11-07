@@ -7,6 +7,7 @@ import {NavLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
+import UsersIcon from '@material-ui/icons/SupervisorAccount';
 import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles(theme => ({
@@ -39,10 +40,10 @@ const Admin = () => {
                     spacing={1}
                 >
                     <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
-                        <NavLink to="/addUser" className={classes.navlink}>
-                            <ListItem button key={"AddUserPage"} name={"AddUserPage"}>
-                                <ListItemIcon><PersonAddIcon color="primary"/></ListItemIcon>
-                                <ListItemText primary="Add User"/>
+                        <NavLink to="/users" className={classes.navlink}>
+                            <ListItem button key={"UsersPage"} name={"UsersPage"}>
+                                <ListItemIcon><UsersIcon color="primary"/></ListItemIcon>
+                                <ListItemText primary="Users"/>
                             </ListItem>
                         </NavLink>
                     </Grid>

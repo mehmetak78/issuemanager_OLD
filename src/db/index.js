@@ -1,7 +1,20 @@
 import {setError} from "../utils/errorUtil";
 
-export const addData = async (data, path) => {
+export const getData = async (path) => {
+    try {
+        const res = await fetch(path);
+        if (res.ok) {
+            const resData = await res.json();
+            return {data: resData};
+        } else {
+            return {error: setError(res, res.status, res.statusText)};
+        }
+    } catch (err) {
+        return {error:setError(err)};
+    }
+};
 
+export const addData = async (data, path) => {
     try {
         const res = await fetch(path,
                                 {
@@ -21,7 +34,6 @@ export const addData = async (data, path) => {
     } catch (err) {
         return {error:setError(err)};
     }
-
 };
 
 

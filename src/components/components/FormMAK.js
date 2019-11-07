@@ -36,7 +36,6 @@ const FormMAK = props => {
     return (
         <Card className={classes.card}>
             <form onSubmit={props.handleSubmit} onReset={props.handleReset}>
-
                 <CardContent>
                     <Typography variant="h1" className={classes.label}>
                         {props.label}

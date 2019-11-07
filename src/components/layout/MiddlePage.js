@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import AddUserForm from "../Forms/AddUserForm";
 import Admin from "../pages/Admin";
 import Settings from "../pages/Settings";
+import UsersForm from "../Forms/UsersForm";
 
 
 const MiddlePage = props => {
@@ -14,6 +15,7 @@ const MiddlePage = props => {
             <Route exact path="/home" component={Home}/>
             <Route exact path="/settings" component={Settings}/>
             <Route exact path="/admin" component={Admin}/>
+            <Route exact path="/users" component={UsersForm}/>
             <Route exact path="/addUser" component={AddUserForm}/>
             <Route component={PageNotFound}/>
         </Switch>
