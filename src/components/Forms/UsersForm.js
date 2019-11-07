@@ -1,12 +1,13 @@
 import React, { useEffect, useState} from 'react';
 import {getData} from "../../db";
-import TableMAK from "../components/TableMAK";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import {Card, makeStyles} from "@material-ui/core";
 import CircularIndeterminate from "../components/CircularIndeterminate";
-import TableSortSelectMAK from "../components/TableSortSelectMAK";
+
 import TableSortMAK from "../components/TableSortMAK";
+
+
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -19,7 +20,6 @@ const UsersForm = props => {
     const classes = useStyles();
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
-
 
     const columns = [
 
@@ -71,8 +71,7 @@ const UsersForm = props => {
                 <Typography variant="h1">
                     Users
                 </Typography>
-                <TableMAK rows={users} columns={columns} dense={true} handleRowClick={handleRowClick}/>
-                <TableSortMAK rows={users} columns={columns} dense={true}  handleRowClick={handleRowClick}/>
+                <TableSortMAK rows={users} columns={columns} dense={true} rowSize={10}  handleRowClick={handleRowClick}/>
                 {loading ? <CircularIndeterminate/> : null }
             </CardContent>
         </Card>

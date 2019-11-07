@@ -10,9 +10,10 @@ import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 import TablePagination from "@material-ui/core/TablePagination";
 
+
 const useStyles = makeStyles(theme => ({
     root: {
-        paddingTop: theme.spacing(1),
+        marginTop: theme.spacing(1),
         width: '100%',
     },
     tableWrapper: {
@@ -24,10 +25,10 @@ const useStyles = makeStyles(theme => ({
 const TableMAK = props => {
     const classes = useStyles();
 
-    const {columns, rows, dense} = props;
+    const {columns, rows, dense, rowSize} = props;
 
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(rowSize);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -39,7 +40,6 @@ const TableMAK = props => {
     };
 
     return (
-
         <Paper className={classes.root}>
             <div className={classes.tableWrapper}>
                 <Table stickyHeader aria-label="sticky table" size={dense ? 'small' : 'medium'}>
@@ -72,12 +72,12 @@ const TableMAK = props => {
                 </Table>
             </div>
             <TablePagination
-                rowsPerPageOptions={[5, 10, 15]}
+                rowsPerPageOptions={[5, 10, 25]}
                 component="div"
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                labelRowsPerPage={"Rows rer page"}
+                labelRowsPerPage={"Rows per page"}
                 labelDisplayedRows={
                     ({from, to, count}) => `(${from}-${to === -1 ? count : to}) / ${count}`
                 }
@@ -101,6 +101,10 @@ TableMAK.propTypes = {
     rows: PropTypes.array.isRequired,
     dense: PropTypes.bool.isRequired,
     handleRowClick: PropTypes.func.isRequired,
+};
+
+TableMAK.defaultProps = {
+    rowSize: 10
 };
 
 export default TableMAK;
