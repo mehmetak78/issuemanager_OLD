@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2573292-3164-44db-8268-a23878944f22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/components/TableMAK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/components/TableMAK_ORJ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/components/TableSortMAK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/components/TableSortSelectMAK.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/CircularIndeterminate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/CircularIndeterminate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/FormMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/FormMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/TableMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/TableMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/TableMAK_ORJ.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572677850915</updated>
       <workItem from="1572677852025" duration="80575000" />
-      <workItem from="1573142126924" duration="14276000" />
+      <workItem from="1573142126924" duration="19857000" />
     </task>
     <task id="LOCAL-00001" summary="After Form Structure">
       <created>1572781788413</created>
@@ -161,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572995674751</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Table">
+      <created>1573158414773</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1573158414774</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +187,8 @@
     <MESSAGE value="After Form Structure" />
     <MESSAGE value="After Top Menu Icons" />
     <MESSAGE value="addData, Modal" />
-    <option name="LAST_COMMIT_MESSAGE" value="addData, Modal" />
+    <MESSAGE value="Table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

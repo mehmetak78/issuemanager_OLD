@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import {Card, makeStyles} from "@material-ui/core";
 import CircularIndeterminate from "../components/CircularIndeterminate";
+import TableSortSelectMAK from "../components/TableSortSelectMAK";
+import TableSortMAK from "../components/TableSortMAK";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -18,21 +20,26 @@ const UsersForm = props => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
+
     const columns = [
+
         {
             name: "userName",
             caption: "User Name",
             align:"left",
+            numeric: false
         },
         {
             name: "firstName",
             caption: "First Name",
             align:"left",
+            numeric: false
         },
         {
             name: "lastName",
             caption: "Last Name",
-            align:"right",
+            align:"left",
+            numeric: false
         }
     ];
 
@@ -52,13 +59,20 @@ const UsersForm = props => {
         // eslint-disable-next-line
     }, []);
 
+    const handleRowClick = (e,row) => {
+        e.preventDefault();
+        console.log(row);
+        props.history.push("/addUser");
+    };
+
     return (
         <Card className={classes.card}>
             <CardContent>
                 <Typography variant="h1">
                     Users
                 </Typography>
-                <TableMAK rows={users} columns={columns}/>
+                <TableMAK rows={users} columns={columns} dense={true} handleRowClick={handleRowClick}/>
+                <TableSortMAK rows={users} columns={columns} dense={true}  handleRowClick={handleRowClick}/>
                 {loading ? <CircularIndeterminate/> : null }
             </CardContent>
         </Card>

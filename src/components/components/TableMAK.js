@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 const TableMAK = props => {
     const classes = useStyles();
 
-    const {columns, rows} = props;
+    const {columns, rows, dense} = props;
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -42,7 +42,7 @@ const TableMAK = props => {
 
         <Paper className={classes.root}>
             <div className={classes.tableWrapper}>
-                <Table stickyHeader aria-label="sticky table">
+                <Table stickyHeader aria-label="sticky table" size={dense ? 'small' : 'medium'}>
                     <TableHead>
                         <TableRow key={0}>
                             {columns.map((column, index) => (
@@ -57,7 +57,7 @@ const TableMAK = props => {
                     <TableBody>
                         {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                <TableRow hover role="checkbox" tabIndex={-1} key={row.id} onClick={(e)=>props.handleRowClick(e,row)}>
                                     {columns.map((column, index) => {
                                         return (
                                             <TableCell key={index} align={column.align}>
@@ -99,6 +99,8 @@ const TableMAK = props => {
 TableMAK.propTypes = {
     columns: PropTypes.array.isRequired,
     rows: PropTypes.array.isRequired,
+    dense: PropTypes.bool.isRequired,
+    handleRowClick: PropTypes.func.isRequired,
 };
 
 export default TableMAK;
