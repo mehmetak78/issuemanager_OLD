@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "../../App.css"
 import {Card, Grid, makeStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -6,9 +6,13 @@ import CardContent from "@material-ui/core/CardContent";
 import {NavLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import UsersIcon from '@material-ui/icons/SupervisorAccount';
 import ListItemText from "@material-ui/core/ListItemText";
+import {
+    setCRUDActionNone,
+    setPaths
+} from "../../redux/actions/dataActions";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -24,13 +28,16 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Admin = () => {
+const Admin = (props) => {
     const classes = useStyles();
+
+    const formName = "Administator";
+
     return (
         <Card className={classes.card}>
-            <CardContent >
-                <Typography variant="h1" >
-                    Administrator
+            <CardContent>
+                <Typography variant="h1">
+                    {formName}
                 </Typography>
                 <Grid
                     container
@@ -47,21 +54,18 @@ const Admin = () => {
                             </ListItem>
                         </NavLink>
                     </Grid>
-                    <Grid item xs={6} sm={6} md={4} lg={3} xl={3}>
-                        <NavLink to="/addUser" className={classes.navlink}>
-                            <ListItem button key={"AddUserPage"} name={"AddUserPage"}>
-                                <ListItemIcon><PersonAddIcon color="primary"/></ListItemIcon>
-                                <ListItemText primary="Add User"/>
-                            </ListItem>
-                        </NavLink>
-                    </Grid>
-
                 </Grid>
-
             </CardContent>
         </Card>
 
     );
 };
 
-export default Admin;
+function mapDispatchToProps() {
+    return {
+        setPaths,
+        setCRUDActionNone
+    }
+}
+
+export default connect(null, mapDispatchToProps())(Admin);

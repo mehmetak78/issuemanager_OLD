@@ -11,6 +11,8 @@ import {ThemeProvider} from '@material-ui/styles';
 
 import {BrowserRouter} from "react-router-dom";
 import ContainerMAK from "./components/components/ContainerMAK";
+import BottomBar from "./components/layout/BottomBar";
+
 
 
 function App() {
@@ -66,8 +68,11 @@ function App() {
                         </div>
                         <div className="MiddlePage">
                             <ContainerMAK>
-                            <MiddlePage/>
+                                <MiddlePage/>
                             </ContainerMAK>
+                        </div>
+                        <div className="TopMenu">
+                            <BottomBar/>
                         </div>
                     </div>
                 </BrowserRouter>

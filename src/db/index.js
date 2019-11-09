@@ -14,7 +14,7 @@ export const getData = async (path) => {
     }
 };
 
-export const addData = async (data, path) => {
+export const insertDB = async (data, path) => {
     try {
         const res = await fetch(path,
                                 {
@@ -35,6 +35,29 @@ export const addData = async (data, path) => {
         return {error:setError(err)};
     }
 };
+
+export const updateDB = async (data, path) => {
+    try {
+        const res = await fetch(`${path}/${data.id}`,
+                                {
+                                    method: "PUT",
+                                    body: JSON.stringify(data),
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    }
+                                }
+        );
+        if (res.ok) {
+            const resData = await res.json();
+            return {data: resData};
+        } else {
+            return {error: setError(res, res.status, res.statusText)};
+        }
+    } catch (err) {
+        return {error:setError(err)};
+    }
+};
+
 
 
 

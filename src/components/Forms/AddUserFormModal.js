@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import AddUserForm from "./AddUserForm";
+import UserForm from "./AddUserForm";
 
 function getModalStyle() {
     const top = 50 ;
@@ -48,7 +48,7 @@ export default function SimpleModal(props) {
                 onClose={handleClose}
             >
                 <div style={modalStyle} className={classes.paper}>
-                   <AddUserForm/>
+                   <UserForm/>
                 </div>
             </Modal>
         </div>

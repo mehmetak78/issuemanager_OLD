@@ -1,9 +1,11 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import "../../App.css"
 import SpeedDialMAK from "../components/SpeedDialMAK";
 import {Card, makeStyles} from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import {setCRUDActionNone, setPaths} from "../../redux/actions/dataActions";
+import {connect} from "react-redux";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -11,14 +13,16 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Home = () => {
+const Home = (props) => {
     const classes = useStyles();
+    const formName = "Tasks";
+
     return (
         <Fragment>
             <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="h1">
-                        Home
+                        {formName}
                     </Typography>
                     <SpeedDialMAK/>
                 </CardContent>
@@ -29,4 +33,11 @@ const Home = () => {
     );
 };
 
-export default Home;
+function mapDispatchToProps() {
+    return {
+        setPaths,
+        setCRUDActionNone
+    }
+}
+
+export default connect(null, mapDispatchToProps())(Home);

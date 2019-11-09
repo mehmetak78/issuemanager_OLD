@@ -11,7 +11,9 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CircularIndeterminate from "./CircularIndeterminate";
 
-export const ADD_RESET = "ADD_RESET";
+export const NO_BUTTON = "ADD_RESET";
+export const ADD_RESET_BUTTON = "ADD_RESET";
+
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -24,8 +26,10 @@ const useStyles = makeStyles(theme => ({
 
 const action = (type, disabled) => {
     switch (type) {
-        case ADD_RESET :
-            return <AddResetButtonsMAK labelForAdd="Add" labelForReset="Cancel" disabled={disabled}/>
+        case NO_BUTTON :
+            return null;
+        case ADD_RESET_BUTTON :
+            return <AddResetButtonsMAK labelForAdd="Save" labelForReset="Cancel" disabled={disabled}/>;
         default:
             return <SubmitButtonMAK label="Add"/>
     }
@@ -61,8 +65,8 @@ const FormMAK = props => {
 };
 
 FormMAK.propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    handleReset: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func,
+    handleReset: PropTypes.func,
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
 };

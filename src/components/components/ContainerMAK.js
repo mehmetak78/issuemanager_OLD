@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(1),
    //     border: "2px red solid",
-        height: "calc(100% - 30px)",
+        height: "calc(100% - 50px)",
         textAlign: "center"
     }
 }));

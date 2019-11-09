@@ -1,9 +1,9 @@
-import React, {Fragment, useState, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -11,7 +11,7 @@ import Menu from '@material-ui/core/Menu';
 
 import SearchIcon from '@material-ui/icons/Search';
 import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
+
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -20,9 +20,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
 
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import {connect} from "react-redux"
-import {toggleLeftMenu} from "../../redux/actions/layoutActions";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -33,7 +32,21 @@ import IconHome from '@material-ui/icons/Home';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
-
+import {
+    setCRUDActionNone,
+    setCRUDActionInserting,
+    setCRUDActionEditing,
+    setCRUDActionSelected,
+    insertData,
+    updateData,
+    cancelInsert,
+    cancelUpdate
+} from "../../redux/actions/dataActions";
+import {
+    CRUD_NONE,
+    CRUD_EDITING,
+    CRUD_SELECTED
+} from '../../redux/actions/actionTypes';
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -42,15 +55,8 @@ const useStyles = makeStyles(theme => ({
     menuButton: {
         marginRight: theme.spacing(2),
     },
-    actionsText: {
-        paddingLeft: theme.spacing(15),
-        paddingRight: theme.spacing(1),
-    },
-    title: {
-        display: 'none',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
+    crudButtons: {
+        // border: "solid 2px gray"
     },
     navlink: {
         textDecoration: "none",
@@ -105,7 +111,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
 const TopMenu = props => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -114,94 +119,85 @@ const TopMenu = props => {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const [issueState, setIssueState] = useState("NO_ISSUE");
     const [searchEnabled, setSearchEnabled] = useState(true);
 
 
     const searchText = useRef('');
 
+    const {
+        setCRUDActionSelected,
+        setCRUDActionNone,
+        insertData,
+        updateData,
+        cancelInsert,
+        cancelUpdate
+    } = props;
+    const {formData, dataPath} = props.data;
+
     const handleAddIssue = (e) => {
         e.preventDefault();
-        setIssueState("INSERTING_ISSUE");
+        setCRUDActionNone();
+        props.history.push("/user")
         setSearchEnabled(false);
     };
-    const handleEditIssue = (e) => {
+
+    const handleSave = (e) => {
         e.preventDefault();
-        setIssueState("EDITING_ISSUE");
-        setSearchEnabled(false);
-    };
-    const handleSaveIssue = (e) => {
-        e.preventDefault();
-        setIssueState("FOUND_ISSUE");
-        console.log(searchText.current.value);
+        if (props.data.formData.id) {
+            updateData(formData, dataPath);
+        }
+        else {
+            insertData(formData, dataPath);
+        }
         setSearchEnabled(true);
     };
-    const handleCancelAddIssue = (e) => {
+
+    const handleCancel = (e) => {
         e.preventDefault();
-        setIssueState("NO_ISSUE");
-        setSearchEnabled(true);
-    };
-    const handleCancelEditIssue = (e) => {
-        e.preventDefault();
-        setIssueState("FOUND_ISSUE");
+        if (props.data.formData.id) {
+            cancelUpdate();
+        }
+        else {
+            cancelInsert();
+        }
+
         setSearchEnabled(true);
     };
 
     const handleSearchChange = (e) => {
-        e.preventDefault();
-        setIssueState("FOUND_ISSUE");
+        //   e.preventDefault();
+        setCRUDActionSelected();
         setSearchEnabled(true);
     };
 
-
     const insertButtons = () => {
+        const {crudState, formPath} = props.data;
+
 
         // eslint-disable-next-line default-case
-        switch (issueState) {
-            case "NO_ISSUE":
+        switch (crudState) {
+            case CRUD_NONE:
+            case CRUD_SELECTED:
                 return (
-                    <Fragment>
+                    formPath ?
+                    <div className={classes.crudButtons}>
+
                         <IconButton color="inherit" onClick={handleAddIssue}>
                             <AddIcon/>
                         </IconButton>
-                        <Typography>{issueState}</Typography>
-                    </Fragment>
+                    </div>
+                        : null
                 );
-            case "FOUND_ISSUE":
+            case CRUD_EDITING:
                 return (
-                    <Fragment>
-                        <IconButton color="inherit" onClick={handleAddIssue}>
-                            <AddIcon/>
-                        </IconButton>
-                        <IconButton color="inherit" onClick={handleEditIssue}>
-                            <EditIcon/>
-                        </IconButton>
-                        <Typography>{issueState}</Typography>
-                    </Fragment>
-                );
-            case "INSERTING_ISSUE":
-                return (
-                    <Fragment>
-                        <IconButton color="inherit" onClick={handleSaveIssue}>
+                    <div className={classes.crudButtons}>
+                        <IconButton color="inherit" onClick={handleSave}>
                             <SaveIcon/>
                         </IconButton>
-                        <IconButton color="inherit" onClick={handleCancelAddIssue}>
+                        <IconButton color="inherit" onClick={handleCancel}>
                             <CancelIcon/>
                         </IconButton>
-                        <Typography>{issueState}</Typography>
-                    </Fragment>
-                );
-            case "EDITING_ISSUE":
-                return (
-                    <Fragment>
-                        <IconButton color="inherit" onClick={handleSaveIssue}>
-                            <SaveIcon/>
-                        </IconButton>
-                        <IconButton color="inherit" onClick={handleCancelEditIssue}>
-                            <CancelIcon/>
-                        </IconButton>
-                        <Typography>{issueState}</Typography>
-                    </Fragment>
+                    </div>
                 );
         }
     };
@@ -237,13 +233,13 @@ const TopMenu = props => {
         >
 
             <List>
-                <NavLink to="/settings" className={classes.navlink} >
+                <NavLink to="/settings" className={classes.navlink}>
                     <ListItem button key={"SettingsPage"} name={"SettingsPage"} onClick={handleMenuClose}>
                         <ListItemIcon><SettingsIcon color="primary"/></ListItemIcon>
                         <ListItemText primary="Settings"/>
                     </ListItem>
                 </NavLink>
-                <NavLink to="/admin" className={classes.navlink} >
+                <NavLink to="/admin" className={classes.navlink}>
                     <ListItem button key={"AdminPage"} name={"AdminPage"} onClick={handleMenuClose}>
                         <ListItemIcon><SupervisorAccountIcon color="primary"/></ListItemIcon>
                         <ListItemText primary="Admin"/>
@@ -307,14 +303,15 @@ const TopMenu = props => {
                         aria-label="open drawer"
 
                     >
-                        <NavLink to={"home"} className={classes.navlink} >
+                        <NavLink to={"home"} className={classes.navlink}>
                             <IconHome/>
                         </NavLink>
                     </IconButton>
 
+                    <div className={classes.grow}/>
                     {insertButtons()}
 
-                    <div className={classes.grow}/>
+
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon/>
@@ -374,17 +371,30 @@ const TopMenu = props => {
 };
 
 TopMenu.propTypes = {
-    toggleLeftMenu: PropTypes.func.isRequired
+    data: PropTypes.object.isRequired,
+    setCRUDActionNone: PropTypes.func.isRequired,
+    setCRUDActionInserting: PropTypes.func.isRequired,
+    setCRUDActionEditing: PropTypes.func.isRequired,
+    setCRUDActionSelected: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
     {
-        log: state.log
+        data: state.data
     }
 );
 
 function mapDispatchToProps() {
-    return {toggleLeftMenu}
+    return {
+        setCRUDActionNone,
+        setCRUDActionInserting,
+        setCRUDActionEditing,
+        setCRUDActionSelected,
+        insertData,
+        updateData,
+        cancelInsert,
+        cancelUpdate
+    }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(TopMenu);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps())(TopMenu));

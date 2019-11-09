@@ -1,10 +1,11 @@
 import {
-    TOGGLE_LEFT_MENU
+    SET_STATUS_MESSAGE,
 } from './actionTypes';
 
-export const toggleLeftMenu = () => {
+export const setStatusMessage = (message) =>  {
     return {
-        type: TOGGLE_LEFT_MENU
+        type: SET_STATUS_MESSAGE,
+        payload: message
     }
 };
 

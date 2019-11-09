@@ -1,21 +1,20 @@
 import {
-    TOGGLE_LEFT_MENU
+    SET_STATUS_MESSAGE
 } from "../actions/actionTypes";
 
 const initialState =
     {
         settings: {},
-        leftMenuCollapsed: false
+        statusMessage: "No Message",
     };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case TOGGLE_LEFT_MENU:
+        case SET_STATUS_MESSAGE:
             return {
                 ...state,
-                leftMenuCollapsed: !state.leftMenuCollapsed
+                statusMessage: action.payload
             };
-
         default:
             return state;
     }

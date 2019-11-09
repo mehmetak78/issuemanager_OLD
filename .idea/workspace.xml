@@ -2,12 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2573292-3164-44db-8268-a23878944f22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/sort.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/BottomBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/actions/dataActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/dataReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/AddUserForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UserForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/AddUserFormModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/AddUserFormModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/TableMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/TableMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/TableSortMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/TableSortMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/TableSortSelectMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/TableSortSelectMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/ContainerMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/ContainerMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/FormMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/FormMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/components/SpeedDialMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/SpeedDialMAK.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/TopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/layoutActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/layoutActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/layoutReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/layoutReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Forms" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -41,17 +57,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Forms" />
+      <recent name="$PROJECT_DIR$/src/components/layout" />
+      <recent name="$PROJECT_DIR$/src/redux/actions" />
+      <recent name="$PROJECT_DIR$/src/redux/reducers" />
       <recent name="$PROJECT_DIR$/src/components/components" />
-      <recent name="$PROJECT_DIR$/src/components/pages" />
-      <recent name="$PROJECT_DIR$/src/components/FormFields" />
-      <recent name="$PROJECT_DIR$/src/redux" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/layout" />
       <recent name="$PROJECT_DIR$/src/components/components" />
       <recent name="$PROJECT_DIR$/src/db" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/Forms" />
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -92,7 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572677850915</updated>
       <workItem from="1572677852025" duration="80575000" />
-      <workItem from="1573142126924" duration="23282000" />
+      <workItem from="1573142126924" duration="63131000" />
     </task>
     <task id="LOCAL-00001" summary="After Form Structure">
       <created>1572781788413</created>
@@ -171,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573164049307</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="TableSort">
+      <created>1573167480279</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1573167480279</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +219,8 @@
     <MESSAGE value="After Top Menu Icons" />
     <MESSAGE value="addData, Modal" />
     <MESSAGE value="Table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Table" />
+    <MESSAGE value="TableSort" />
+    <option name="LAST_COMMIT_MESSAGE" value="TableSort" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
