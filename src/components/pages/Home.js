@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment} from 'react';
 import "../../App.css"
 import SpeedDialMAK from "../components/SpeedDialMAK";
 import {Card, makeStyles} from "@material-ui/core";

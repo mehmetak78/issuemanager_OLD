@@ -145,8 +145,7 @@ const TopMenu = props => {
         e.preventDefault();
         if (props.data.formData.id) {
             updateData(formData, dataPath);
-        }
-        else {
+        } else {
             insertData(formData, dataPath);
         }
         setSearchEnabled(true);
@@ -156,8 +155,7 @@ const TopMenu = props => {
         e.preventDefault();
         if (props.data.formData.id) {
             cancelUpdate();
-        }
-        else {
+        } else {
             cancelInsert();
         }
 
@@ -180,12 +178,12 @@ const TopMenu = props => {
             case CRUD_SELECTED:
                 return (
                     formPath ?
-                    <div className={classes.crudButtons}>
+                        <div className={classes.crudButtons}>
 
-                        <IconButton color="inherit" onClick={handleAddIssue}>
-                            <AddIcon/>
-                        </IconButton>
-                    </div>
+                            <IconButton color="inherit" onClick={handleAddIssue}>
+                                <AddIcon/>
+                            </IconButton>
+                        </div>
                         : null
                 );
             case CRUD_EDITING:
@@ -296,19 +294,21 @@ const TopMenu = props => {
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
+                    <NavLink to={"home"} className={classes.navlink}>
+                        <IconButton
+                            edge="start"
+                            className={classes.menuButton}
+                            color="inherit"
+                            aria-label="open drawer"
 
-                    >
-                        <NavLink to={"home"} className={classes.navlink}>
+                        >
+
                             <IconHome/>
-                        </NavLink>
-                    </IconButton>
 
+                        </IconButton>
+                    </NavLink>
                     <div className={classes.grow}/>
+
                     {insertButtons()}
 
 

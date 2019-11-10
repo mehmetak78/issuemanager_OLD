@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import "../../App.css"
 import {Card, Grid, makeStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
