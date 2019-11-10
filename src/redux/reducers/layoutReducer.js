@@ -1,5 +1,6 @@
 import {
-    SET_STATUS_MESSAGE
+    SET_STATUS_MESSAGE,
+    SET_LOADING
 } from "../actions/actionTypes";
 
 const initialState =
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 statusMessage: action.payload
+            };
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: action.payload
             };
         default:
             return state;

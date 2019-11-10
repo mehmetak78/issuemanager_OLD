@@ -13,6 +13,10 @@ import {
     setCRUDActionSelected,
     setCRUDActionNone
 } from "../../redux/actions/dataActions";
+import {
+    setLoading
+} from "../../redux/actions/layoutActions";
+
 import {connect} from "react-redux";
 
 
@@ -29,7 +33,6 @@ const UsersForm = props => {
 
     const classes = useStyles();
     const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     const columns = [
 
@@ -54,17 +57,16 @@ const UsersForm = props => {
     ];
 
     useEffect(() => {
-        //mount
         const asyncFunction = async () => {
-            setLoading(true);
+            props.setLoading(true);
             const res = await getData(dataPath);
             if (res.error) {
                 console.log(res.error);
-                setLoading(false);
             } else {
                 setUsers(res.data);
-                setLoading(false);
             }
+
+            props.setLoading(false);
         };
 
         props.setCRUDActionNone();
@@ -73,7 +75,6 @@ const UsersForm = props => {
         // eslint-disable-next-line
     }, []);
     useEffect(() => {
-        //unMount
         return () => {
             //            props.clearForm();        // Don't call if going to User by clickking the row
         }
@@ -82,9 +83,7 @@ const UsersForm = props => {
 
     const handleRowClick = (e, row) => {
         e.preventDefault();
-        console.log(row);
         props.setCRUDActionSelected();
-
         props.setFormData(row);
         props.history.push(formPath);
     };
@@ -96,16 +95,21 @@ const UsersForm = props => {
                     {formName}
                 </Typography>
                 <TableSortMAK rows={users} columns={columns} dense={true} rowSize={10} handleRowClick={handleRowClick}/>
-                {loading ? <CircularIndeterminate/> : null}
+                {props.loading ? <CircularIndeterminate/> : null}
             </CardContent>
         </Card>
     )
-
-        ;
 };
+
+const mapStateToProps = state => (
+    {
+        loading: state.layout.loading,
+    }
+);
 
 function mapDispatchToProps() {
     return {
+        setLoading,
         setPaths,
         clearForm,
         setFormData,
@@ -114,4 +118,4 @@ function mapDispatchToProps() {
     }
 }
 
-export default connect(null, mapDispatchToProps())(UsersForm);
+export default connect(mapStateToProps, mapDispatchToProps())(UsersForm);

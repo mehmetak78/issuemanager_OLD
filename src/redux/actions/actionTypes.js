@@ -1,5 +1,6 @@
 
 export const SET_STATUS_MESSAGE = 'SET_STATUS_MESSAGE';
+export const SET_LOADING = 'SET_LOADING';
 
 export const CRUD_NONE = 'CRUD_NONE';
 export const CRUD_INSERTING = 'CRUD_INSERTING';

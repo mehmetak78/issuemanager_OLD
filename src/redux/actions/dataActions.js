@@ -1,4 +1,5 @@
 import {
+    SET_LOADING,
     CRUD_NONE,
     CRUD_INSERTING,
     CRUD_EDITING,
@@ -9,10 +10,18 @@ import {
     INSERT_DATA,
     UPDATE_DATA,
     CANCEL_INSERT,
-    CANCEL_UPDATE, CLEAR_FORM
+    CANCEL_UPDATE,
+    CLEAR_FORM
 } from './actionTypes';
 
 import {insertDB, updateDB} from "../../db";
+
+const setLoading = (val) => {
+    return {
+        type: SET_LOADING,
+        payload: val
+    }
+};
 
 export const setCRUDActionNone = (message) => {
     return {
@@ -85,30 +94,26 @@ export const cancelUpdate = () => {
 };
 
 export const insertData = (formData, formPath) => async dispatch => {
-    //setLoading(true);
+    dispatch(setLoading(true));
     const res = await insertDB(formData, formPath);
     if (res.error) {
         console.log(res.error);
 
     } else {
-        console.log(res.data);
         dispatch({type: INSERT_DATA, payload: res.data});
     }
-    //setLoading(false);
-    //props.history.push("/admin");
+    dispatch(setLoading(false));
 };
 
 export const updateData = (formData, formPath) => async dispatch => {
-    //setLoading(true);
+    dispatch(setLoading(true));
     const res = await updateDB(formData, formPath);
     if (res.error) {
         console.log(res.error);
 
     } else {
-        console.log(res.data);
         dispatch({type: UPDATE_DATA, payload: res.data});
     }
-    //setLoading(false);
-    //props.history.push("/admin");
+    dispatch(setLoading(false));
 };
 

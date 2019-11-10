@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
 const TextFieldMAK = props => {
     const classes = useStyles();
     const {field} = props;
+    console.log(props.error);
     return (
         !field.hidden ?
         <Grid item {...field.size}>
@@ -21,6 +22,8 @@ const TextFieldMAK = props => {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                error={props.errorMessage ?props.errorMessage.length > 0:false}
+                helperText={props.errorMessage}
                 color="primary"
                 onChange={props.onChange}
             />
@@ -33,6 +36,7 @@ const TextFieldMAK = props => {
 
 TextFieldMAK.propTypes = {
     field: PropTypes.object.isRequired,
+    errorMessage: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
 };
 

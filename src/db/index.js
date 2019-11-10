@@ -1,4 +1,4 @@
-import {setError} from "../utils/errorUtil";
+import {sendError} from "../utils/errorUtil";
 
 export const getData = async (path) => {
     try {
@@ -7,10 +7,10 @@ export const getData = async (path) => {
             const resData = await res.json();
             return {data: resData};
         } else {
-            return {error: setError(res, res.status, res.statusText)};
+            return {error: sendError(res, res.status, res.statusText)};
         }
     } catch (err) {
-        return {error:setError(err)};
+        return {error:sendError(err)};
     }
 };
 
@@ -29,10 +29,10 @@ export const insertDB = async (data, path) => {
             const resData = await res.json();
             return {data: resData};
         } else {
-            return {error: setError(res, res.status, res.statusText)};
+            return {error: sendError(res, res.status, res.statusText)};
         }
     } catch (err) {
-        return {error:setError(err)};
+        return {error:sendError(err)};
     }
 };
 
@@ -51,10 +51,10 @@ export const updateDB = async (data, path) => {
             const resData = await res.json();
             return {data: resData};
         } else {
-            return {error: setError(res, res.status, res.statusText)};
+            return {error: sendError(res, res.status, res.statusText)};
         }
     } catch (err) {
-        return {error:setError(err)};
+        return {error:sendError(err)};
     }
 };
 
@@ -67,9 +67,11 @@ export const updateDB = async (data, path) => {
 // Change method Name to addData to call from Add Button of Add User
 // CALLING a GET request from contact-keeper users.js
 // go to contact-keeper and run server  : npm run server
+// And use code : const res = await  waitingCallTest(null, null); wherever you want to test
 // Server will wait for some seconds before response
 // You can test spinner
-export const addData2 = async (data, path) => {
+
+export const waitingCallTest = async (data, path) => {
 
     try {
         const res = await fetch("/api/users");
@@ -78,11 +80,11 @@ export const addData2 = async (data, path) => {
             const data = await res.json();
             return {data};
         }else {
-            return {error: setError(res, res.status, res.statusText)};
+            return {error: sendError(res, res.status, res.statusText)};
         }
 
     } catch (err) {
-        return {error:setError(err)};
+        return {error:sendError(err)};
     }
 
 };
