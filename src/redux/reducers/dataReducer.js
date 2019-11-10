@@ -19,7 +19,7 @@ const initialState =
         formPath: "",
         dataPath: "",
         initialFormData: null,
-        formData: null,
+        formData: null
     };
 
 export default (state = initialState, action) => {

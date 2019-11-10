@@ -9,7 +9,7 @@ import {
     setCRUDActionInserting,
     setCRUDActionSelected,
     setCRUDActionEditing,
-    clearForm,
+    clearForm
 } from "../../redux/actions/dataActions";
 import {
     CRUD_EDITING,
@@ -102,7 +102,8 @@ const UserForm = (props) => {
 
         props.setFormData({[e.target.name]: e.target.value});
     };
-    console.log(`Render : ${fields.userName.error}`);
+
+
     return (
 
         formData ?

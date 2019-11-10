@@ -11,7 +11,8 @@ import {
     UPDATE_DATA,
     CANCEL_INSERT,
     CANCEL_UPDATE,
-    CLEAR_FORM
+    CLEAR_FORM,
+
 } from './actionTypes';
 
 import {insertDB, updateDB} from "../../db";
@@ -85,6 +86,9 @@ export const cancelInsert = () => {
         payload: null
     }
 };
+
+
+
 
 export const cancelUpdate = () => {
     return {
