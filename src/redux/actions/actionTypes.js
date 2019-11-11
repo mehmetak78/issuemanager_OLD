@@ -8,7 +8,14 @@ export const CRUD_EDITING = 'CRUD_EDITING';
 export const CRUD_SELECTED = 'CRUD_SELECTED';
 
 export const SET_PATHS = 'SET_PATHS';
+
 export const CLEAR_FORM = 'CLEAR_FORM';
+export const SET_VALIDATIONS = 'SET_VALIDATIONS';
+export const CLEAR_VALIDATIONS = 'CLEAR_VALIDATIONS';
+export const ADD_ERROR = 'ADD_ERROR';
+export const SET_ERRORS = 'SET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
 
 export const SET_FORM_DATA = 'SET_FORM_DATA';
 export const SET_INITIAL_FORM_DATA = 'SET_INITIAL_FORM_DATA';

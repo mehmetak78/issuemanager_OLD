@@ -7,6 +7,10 @@ const useStyles = makeStyles(theme => ({
         //      marginLeft: theme.spacing(1),
         //    marginRight: theme.spacing(1),
     },
+    input: {
+        margin:0,
+        padding:0
+    }
 }));
 
 const TextFieldMAK = props => {
@@ -24,6 +28,7 @@ const TextFieldMAK = props => {
                 error={props.errorMessage ?props.errorMessage.length > 0:false}
                 helperText={props.errorMessage}
                 color="primary"
+                InputProps={{className:classes.input}}
                 onChange={props.onChange}
             />
             {props.children}
@@ -35,7 +40,7 @@ const TextFieldMAK = props => {
 
 TextFieldMAK.propTypes = {
     field: PropTypes.object.isRequired,
-  //  errorMessage: PropTypes.string.isRequired,
+    errorMessage: PropTypes.string,
     onChange: PropTypes.func.isRequired,
 };
 

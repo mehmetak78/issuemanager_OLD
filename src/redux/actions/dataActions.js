@@ -11,7 +11,7 @@ import {
     UPDATE_DATA,
     CANCEL_INSERT,
     CANCEL_UPDATE,
-    CLEAR_FORM,
+    CLEAR_FORM, SET_VALIDATIONS, CLEAR_VALIDATIONS, ADD_ERROR, CLEAR_ERRORS, SET_ERRORS,
 
 } from './actionTypes';
 
@@ -62,6 +62,37 @@ export const setPaths = (formPath, dataPath) => {
 export const clearForm = () => {
     return {
         type: CLEAR_FORM ,
+        payload: null
+    }
+};
+
+export const setValidations = (validations) => {
+    return {
+        type: SET_VALIDATIONS ,
+        payload: validations
+    }
+};
+export const clearValidations = () => {
+    return {
+        type: CLEAR_VALIDATIONS ,
+        payload: null
+    }
+};
+export const addError = (error) => {
+    return {
+        type: ADD_ERROR,
+        payload: error
+    }
+};
+export const setErrors = (errors) => {
+    return {
+        type: SET_ERRORS,
+        payload: errors
+    }
+};
+export const clearErrors = () => {
+    return {
+        type: CLEAR_ERRORS,
         payload: null
     }
 };

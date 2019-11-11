@@ -40,13 +40,16 @@ import {
     insertData,
     updateData,
     cancelInsert,
-    cancelUpdate
+    cancelUpdate,
+    setErrors,
+    clearErrors
 } from "../../redux/actions/dataActions";
 import {
     CRUD_NONE,
     CRUD_EDITING,
     CRUD_SELECTED
 } from '../../redux/actions/actionTypes';
+import {validateForm} from "../../utils/validationUtil";
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -143,12 +146,20 @@ const TopMenu = props => {
 
     const handleSave = (e) => {
         e.preventDefault();
-        if (props.data.formData.id) {
-            updateData(formData, dataPath);
+
+        const errors = validateForm(props.data.validations, formData);
+        console.log(errors);
+        if (errors) {
+            props.setErrors(errors);
         } else {
-            insertData(formData, dataPath);
+            console.log("saving")
+            if (props.data.formData.id) {
+                updateData(formData, dataPath);
+            } else {
+                insertData(formData, dataPath);
+            }
+            setSearchEnabled(true);
         }
-        setSearchEnabled(true);
     };
 
     const handleCancel = (e) => {
@@ -158,7 +169,6 @@ const TopMenu = props => {
         } else {
             cancelInsert();
         }
-
         setSearchEnabled(true);
     };
 
@@ -393,7 +403,9 @@ function mapDispatchToProps() {
         insertData,
         updateData,
         cancelInsert,
-        cancelUpdate
+        cancelUpdate,
+        setErrors,
+        clearErrors
     }
 }
 

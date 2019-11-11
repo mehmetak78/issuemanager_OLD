@@ -1,21 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import FormMAK, {NO_BUTTON} from "../components/FormMAK";
 import TextFieldMAK from "../components/TextFieldMAK";
 import {
     setPaths,
+    setValidations,
+    clearValidations,
     setFormData,
     setInitialFormData,
     setCRUDActionInserting,
     setCRUDActionSelected,
     setCRUDActionEditing,
-    clearForm
+    clearForm,
+    addError,
+    clearErrors
 } from "../../redux/actions/dataActions";
 import {
     CRUD_EDITING,
     CRUD_NONE,
     CRUD_SELECTED,
 } from "../../redux/actions/actionTypes";
+import {validateField} from "../../utils/validationUtil";
 
 const UserForm = (props) => {
 
@@ -23,10 +28,9 @@ const UserForm = (props) => {
     const dataPath = "/users";
     const formName = "User";
 
-    const [errors, setErrors] = useState(null);
-
-    const {formData} = props.data;
+    const {formData, formErrors} = props.data;
     const {loading} = props.layout;
+
 
     const fields = {
         userName: {
@@ -36,8 +40,15 @@ const UserForm = (props) => {
             type: "email",
             hidden: false,
             disabled: false,
-            error:null,
-            size: {xs: 12, sm: 12, md: 6, lg: 4, xl: 3}
+            autoComplete: "userName",
+            error: null,
+            size: {xs: 12, sm: 12, md: 6, lg: 4, xl: 3},
+            validation: {
+                emailCheck: true,
+                emptyCheck: true,
+                minLength: 3,
+                maxLength: 30
+            }
         },
         firstName: {
             name: "firstName",
@@ -46,8 +57,14 @@ const UserForm = (props) => {
             type: "text",
             hidden: false,
             disabled: false,
-            error:null,
-            size: {xs: 12, sm: 12, md: 6, lg: 4, xl: 3}
+            autoComplete: "firstName",
+            error: null,
+            size: {xs: 12, sm: 12, md: 6, lg: 4, xl: 3},
+            validation: {
+                emptyCheck: true,
+                minLength: 3,
+                maxLength: 30
+            }
         },
         lastName: {
             name: "lastName",
@@ -56,18 +73,37 @@ const UserForm = (props) => {
             type: "text",
             hidden: false,
             disabled: false,
-            error:null,
-            size: {xs: 12, sm: 12, md: 6, lg: 4, xl: 3}
+            autoComplete: "lastName",
+            error: null,
+            size: {xs: 12, sm: 12, md: 6, lg: 4, xl: 3},
+            validation: {
+                emptyCheck: true,
+                minLength: 3,
+                maxLength: 30
+            }
         },
     };
 
+    const validations = {};
+    Object.keys(fields).forEach((key) => {
+        validations[key] = {
+            name: fields[key].name,
+            label: fields[key].label,
+            type: fields[key].type, ...fields[key].validation
+        };
+    });
+
     useEffect(() => {
         props.setPaths(formPath, dataPath);
+        props.setValidations(validations);
+
         // eslint-disable-next-line
     }, []);
     useEffect(() => {
         return () => {
             props.clearForm();
+            props.clearValidations();
+            props.clearErrors();
         }
         // eslint-disable-next-line
     }, []);
@@ -93,19 +129,17 @@ const UserForm = (props) => {
         if (props.data.crudState !== CRUD_EDITING) {
             props.setCRUDActionEditing();
         }
-        if (e.target.value.length <= 2) {
-            setErrors({...errors,[e.target.name]:"Value Must be Greater Than 2"});
+        const field = fields[e.target.name];
+        const error = validateField(validations[field.name], e.target.value);
+        if (error) {
+            props.addError(error);
+        } else if (props.data.formErrors && props.data.formErrors[field.name]) {
+            props.addError({[field.name]: null});
         }
-        else {
-            setErrors({...errors, [e.target.name]:""});
-        }
-
-        props.setFormData({[e.target.name]: e.target.value});
+        props.setFormData({[field.name]: e.target.value});
     };
 
-
     return (
-
         formData ?
             <FormMAK
                 type={NO_BUTTON}
@@ -113,16 +147,16 @@ const UserForm = (props) => {
                 loading={loading}>
 
                 <TextFieldMAK
-                    errorMessage={errors?errors[fields.userName.name]:null}
+                    errorMessage={formErrors ? formErrors[fields.userName.name] : null}
                     field={fields.userName}
                     onChange={handleChange}
                 />
                 <TextFieldMAK
-                    errorMessage={errors?errors[fields.firstName.name]:null}
+                    errorMessage={formErrors ? formErrors[fields.firstName.name] : null}
                     field={fields.firstName}
                     onChange={handleChange}/>
                 <TextFieldMAK
-                    errorMessage={errors?errors[fields.lastName.name]:null}
+                    errorMessage={formErrors ? formErrors[fields.lastName.name] : null}
                     field={fields.lastName}
                     onChange={handleChange}/>
             </FormMAK>
@@ -140,12 +174,16 @@ const mapStateToProps = state => (
 function mapDispatchToProps() {
     return {
         setPaths,
+        setValidations,
+        clearValidations,
         setFormData,
         setInitialFormData,
         setCRUDActionInserting,
         setCRUDActionSelected,
         setCRUDActionEditing,
-        clearForm
+        clearForm,
+        addError,
+        clearErrors
     }
 }
 
