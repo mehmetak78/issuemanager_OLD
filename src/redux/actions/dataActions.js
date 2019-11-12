@@ -15,7 +15,7 @@ import {
 
 } from './actionTypes';
 
-import {insertDB, updateDB} from "../../db";
+import {insertDB, updateDB, deleteDB} from "../../db";
 
 const setLoading = (val) => {
     return {
@@ -128,9 +128,9 @@ export const cancelUpdate = () => {
     }
 };
 
-export const insertData = (formData, formPath) => async dispatch => {
+export const insertData = (formData, dataPath) => async dispatch => {
     dispatch(setLoading(true));
-    const res = await insertDB(formData, formPath);
+    const res = await insertDB(formData, dataPath);
     if (res.error) {
         console.log(res.error);
 
@@ -140,9 +140,9 @@ export const insertData = (formData, formPath) => async dispatch => {
     dispatch(setLoading(false));
 };
 
-export const updateData = (formData, formPath) => async dispatch => {
+export const updateData = (formData, dataPath) => async dispatch => {
     dispatch(setLoading(true));
-    const res = await updateDB(formData, formPath);
+    const res = await updateDB(formData, dataPath);
     if (res.error) {
         console.log(res.error);
 
@@ -151,4 +151,17 @@ export const updateData = (formData, formPath) => async dispatch => {
     }
     dispatch(setLoading(false));
 };
+
+export const deleteData = (formData, dataPath) => async dispatch => {
+    dispatch(setLoading(true));
+    const res = await deleteDB(formData, dataPath);
+    if (res.error) {
+        console.log(res.error);
+
+    } else {
+        dispatch({type: CRUD_NONE, payload: res.data});
+    }
+    dispatch(setLoading(false));
+};
+
 

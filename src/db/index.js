@@ -10,7 +10,7 @@ export const getData = async (path) => {
             return {error: sendError(res, res.status, res.statusText)};
         }
     } catch (err) {
-        return {error:sendError(err)};
+        return {error: sendError(err)};
     }
 };
 
@@ -32,7 +32,7 @@ export const insertDB = async (data, path) => {
             return {error: sendError(res, res.status, res.statusText)};
         }
     } catch (err) {
-        return {error:sendError(err)};
+        return {error: sendError(err)};
     }
 };
 
@@ -54,13 +54,26 @@ export const updateDB = async (data, path) => {
             return {error: sendError(res, res.status, res.statusText)};
         }
     } catch (err) {
-        return {error:sendError(err)};
+        return {error: sendError(err)};
     }
 };
 
-
-
-
+export const deleteDB = async (data, path) => {
+    try {
+        const res = await fetch(`${path}/${data.id}`,
+                                {
+                                    method: "DELETE",
+                                }
+        );
+        if (res.ok) {
+            return {data: data};
+        } else {
+            return {error: sendError(res, res.status, res.statusText)};
+        }
+    } catch (err) {
+        return {error: sendError(err)};
+    }
+};
 
 
 // For JUST TESTING PURPOSE
@@ -79,12 +92,12 @@ export const waitingCallTest = async (data, path) => {
         if (res.ok) {
             const data = await res.json();
             return {data};
-        }else {
+        } else {
             return {error: sendError(res, res.status, res.statusText)};
         }
 
     } catch (err) {
-        return {error:sendError(err)};
+        return {error: sendError(err)};
     }
 
 };

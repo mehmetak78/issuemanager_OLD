@@ -14,6 +14,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import SaveIcon from '@material-ui/icons/Save';
 import CancelIcon from '@material-ui/icons/Cancel';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -28,7 +29,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 
-import IconHome from '@material-ui/icons/Home';
+import HomeIcon from '@material-ui/icons/Home';
+import BackIcon from '@material-ui/icons/ArrowBack';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
@@ -39,6 +41,7 @@ import {
     setCRUDActionSelected,
     insertData,
     updateData,
+    deleteData,
     cancelInsert,
     cancelUpdate,
     setErrors,
@@ -56,7 +59,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        //marginRight: theme.spacing(2),
     },
     crudButtons: {
         // border: "solid 2px gray"
@@ -75,7 +78,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('xs')]: {
             marginLeft: theme.spacing(3),
             width: 'auto',
         },
@@ -132,15 +135,22 @@ const TopMenu = props => {
         setCRUDActionNone,
         insertData,
         updateData,
+        deleteData,
         cancelInsert,
         cancelUpdate
     } = props;
-    const {formData, dataPath} = props.data;
+    const {formData, formPath, dataPath} = props.data;
 
-    const handleAddIssue = (e) => {
+    const handleBack = (e) => {
+        setCRUDActionNone();
+        props.history.goBack();
+    };
+
+    const handleAdd = (e) => {
         e.preventDefault();
         setCRUDActionNone();
-        props.history.push("/user")
+        props.history.push(formPath);
+
         setSearchEnabled(false);
     };
 
@@ -148,11 +158,9 @@ const TopMenu = props => {
         e.preventDefault();
 
         const errors = validateForm(props.data.validations, formData);
-        console.log(errors);
         if (errors) {
             props.setErrors(errors);
         } else {
-            console.log("saving")
             if (props.data.formData.id) {
                 updateData(formData, dataPath);
             } else {
@@ -160,6 +168,10 @@ const TopMenu = props => {
             }
             setSearchEnabled(true);
         }
+    };
+    const handleDelete = (e) => {
+        e.preventDefault();
+        deleteData(formData, dataPath);
     };
 
     const handleCancel = (e) => {
@@ -185,13 +197,24 @@ const TopMenu = props => {
         // eslint-disable-next-line default-case
         switch (crudState) {
             case CRUD_NONE:
+                return (
+                    formPath ?
+                        <div className={classes.crudButtons}>
+                            <IconButton color="inherit" onClick={handleAdd}>
+                                <AddIcon/>
+                            </IconButton>
+                        </div>
+                        : null
+                );
             case CRUD_SELECTED:
                 return (
                     formPath ?
                         <div className={classes.crudButtons}>
-
-                            <IconButton color="inherit" onClick={handleAddIssue}>
+                            <IconButton color="inherit" onClick={handleAdd}>
                                 <AddIcon/>
+                            </IconButton>
+                            <IconButton color="inherit" onClick={handleDelete}>
+                                <DeleteIcon/>
                             </IconButton>
                         </div>
                         : null
@@ -312,15 +335,18 @@ const TopMenu = props => {
                             aria-label="open drawer"
 
                         >
-
-                            <IconHome/>
-
+                            <HomeIcon/>
                         </IconButton>
                     </NavLink>
+
+                    <IconButton color="inherit" onClick={handleBack}>
+                        <BackIcon/>
+                    </IconButton>
+
+
                     <div className={classes.grow}/>
 
                     {insertButtons()}
-
 
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
@@ -402,6 +428,7 @@ function mapDispatchToProps() {
         setCRUDActionSelected,
         insertData,
         updateData,
+        deleteData,
         cancelInsert,
         cancelUpdate,
         setErrors,

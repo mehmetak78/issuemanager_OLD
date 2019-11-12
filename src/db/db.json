@@ -2,39 +2,15 @@
   "users": [
     {
       "id": 1,
-      "userName": "mehmetak78@hotmail.com",
+      "userName": "mehmet2@hotmail.com",
       "firstName": "Mehmet",
-      "lastName": "Ak"
+      "lastName": "Akk"
     },
     {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdf",
-      "lastName": "asdf",
-      "id": 2
-    },
-    {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdf",
-      "lastName": "asdffsff",
-      "id": 3
-    },
-    {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdf",
-      "lastName": "asdf",
-      "id": 4
-    },
-    {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdf",
-      "lastName": "asdf",
-      "id": 5
-    },
-    {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdf",
-      "lastName": "asdfdsafsdf",
-      "id": 6
+      "id": 2,
+      "userName": "mehmet@mehmet.com",
+      "firstName": "Mehmet",
+      "lastName": "Akk"
     }
   ]
 }

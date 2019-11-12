@@ -115,6 +115,7 @@ const UserForm = (props) => {
             Object.keys(fields).forEach((key) => (
                 fields[key] = ""
             ));
+            fields["id"] = null;
             setFormData(fields);
             setInitialFormData(fields);
             setCRUDActionInserting();
