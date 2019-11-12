@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {getData} from "../../db";
+
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import {Card, makeStyles} from "@material-ui/core";
 import CircularIndeterminate from "../components/CircularIndeterminate";
 
 import TableSortMAK from "../components/TableSortMAK";
+
+import {getData} from "../../db";
 import {
     setPaths,
     clearForm,
@@ -14,7 +16,8 @@ import {
     setCRUDActionNone
 } from "../../redux/actions/dataActions";
 import {
-    setLoading
+    setLoading,
+    clearSearchText
 } from "../../redux/actions/layoutActions";
 
 import {connect} from "react-redux";
@@ -57,9 +60,16 @@ const UsersForm = props => {
     ];
 
     useEffect(() => {
+        props.setCRUDActionNone();
+        props.setPaths(formPath,dataPath);
+
+        // eslint-disable-next-line
+    }, []);
+
+    useEffect(() => {
         const asyncFunction = async () => {
             props.setLoading(true);
-            const res = await getData(dataPath);
+            const res = await getData(dataPath, props.searchText);
             if (res.error) {
                 console.log(res.error);
             } else {
@@ -72,11 +82,17 @@ const UsersForm = props => {
         props.setCRUDActionNone();
         props.setPaths(formPath,dataPath);
         asyncFunction();
+
+
         // eslint-disable-next-line
-    }, []);
+    }, [props.searchText]);
+
     useEffect(() => {
         return () => {
+            console.log("props.clearSearchText();")
+            props.clearSearchText();
             //            props.clearForm();        // Don't call if going to User by clickking the row
+
         }
         // eslint-disable-next-line
     }, []);
@@ -104,6 +120,7 @@ const UsersForm = props => {
 const mapStateToProps = state => (
     {
         loading: state.layout.loading,
+        searchText: state.layout.searchText,
     }
 );
 
@@ -113,6 +130,7 @@ function mapDispatchToProps() {
         setPaths,
         clearForm,
         setFormData,
+        clearSearchText,
         setCRUDActionSelected,
         setCRUDActionNone
     }

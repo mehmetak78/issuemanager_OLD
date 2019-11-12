@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -31,13 +31,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import HomeIcon from '@material-ui/icons/Home';
 import BackIcon from '@material-ui/icons/ArrowBack';
+import UpIcon from '@material-ui/icons/ArrowUpward';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 import {
     setCRUDActionNone,
     setCRUDActionInserting,
-    setCRUDActionEditing,
     setCRUDActionSelected,
     insertData,
     updateData,
@@ -48,9 +48,11 @@ import {
     clearErrors
 } from "../../redux/actions/dataActions";
 import {
+    setSearchText
+} from "../../redux/actions/layoutActions";
+import {
     CRUD_NONE,
-    CRUD_EDITING,
-    CRUD_SELECTED
+    CRUD_SELECTED, CRUD_UPDATE_EDITING, CRUD_INSERT_EDITING
 } from '../../redux/actions/actionTypes';
 import {validateForm} from "../../utils/validationUtil";
 
@@ -125,13 +127,12 @@ const TopMenu = props => {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const [searchEnabled, setSearchEnabled] = useState(true);
+//    const [searchEnabled, setSearchEnabled] = useState(true);
 
 
     const searchText = useRef('');
 
     const {
-        setCRUDActionSelected,
         setCRUDActionNone,
         insertData,
         updateData,
@@ -139,11 +140,16 @@ const TopMenu = props => {
         cancelInsert,
         cancelUpdate
     } = props;
-    const {formData, formPath, dataPath} = props.data;
+    const {formData, formPath, upFormPath, dataPath} = props.data;
 
     const handleBack = (e) => {
         setCRUDActionNone();
         props.history.goBack();
+    };
+
+    const handleUpForm = (e) => {
+        setCRUDActionNone();
+        props.history.push(upFormPath);
     };
 
     const handleAdd = (e) => {
@@ -151,7 +157,7 @@ const TopMenu = props => {
         setCRUDActionNone();
         props.history.push(formPath);
 
-        setSearchEnabled(false);
+        //setSearchEnabled(false);
     };
 
     const handleSave = (e) => {
@@ -166,12 +172,13 @@ const TopMenu = props => {
             } else {
                 insertData(formData, dataPath);
             }
-            setSearchEnabled(true);
+            //setSearchEnabled(true);
         }
     };
     const handleDelete = (e) => {
         e.preventDefault();
         deleteData(formData, dataPath);
+        props.history.push(upFormPath);
     };
 
     const handleCancel = (e) => {
@@ -181,13 +188,17 @@ const TopMenu = props => {
         } else {
             cancelInsert();
         }
-        setSearchEnabled(true);
+        //setSearchEnabled(true);
     };
 
-    const handleSearchChange = (e) => {
+    const handleSearchKeyPressed = (e) => {
         //   e.preventDefault();
-        setCRUDActionSelected();
-        setSearchEnabled(true);
+        if (e.charCode === 13) { // enter key pressed
+            e.preventDefault();
+            props.setSearchText(searchText.current.value);
+            props.history.push(upFormPath);
+        }
+
     };
 
     const insertButtons = () => {
@@ -219,7 +230,8 @@ const TopMenu = props => {
                         </div>
                         : null
                 );
-            case CRUD_EDITING:
+            case CRUD_UPDATE_EDITING:
+            case CRUD_INSERT_EDITING:
                 return (
                     <div className={classes.crudButtons}>
                         <IconButton color="inherit" onClick={handleSave}>
@@ -342,6 +354,9 @@ const TopMenu = props => {
                     <IconButton color="inherit" onClick={handleBack}>
                         <BackIcon/>
                     </IconButton>
+                    <IconButton color="inherit" onClick={handleUpForm}>
+                        <UpIcon/>
+                    </IconButton>
 
 
                     <div className={classes.grow}/>
@@ -353,9 +368,9 @@ const TopMenu = props => {
                             <SearchIcon/>
                         </div>
                         <InputBase
-                            onChange={handleSearchChange}
+                            onKeyPress={handleSearchKeyPressed}
                             placeholder="Search…"
-                            disabled={!searchEnabled}
+                            //disabled={!searchEnabled}
                             classes={{
                                 root: classes.inputRoot,
                                 input: classes.inputInput,
@@ -410,8 +425,15 @@ TopMenu.propTypes = {
     data: PropTypes.object.isRequired,
     setCRUDActionNone: PropTypes.func.isRequired,
     setCRUDActionInserting: PropTypes.func.isRequired,
-    setCRUDActionEditing: PropTypes.func.isRequired,
     setCRUDActionSelected: PropTypes.func.isRequired,
+    insertData: PropTypes.func.isRequired,
+    updateData: PropTypes.func.isRequired,
+    deleteData: PropTypes.func.isRequired,
+    cancelInsert: PropTypes.func.isRequired,
+    cancelUpdate: PropTypes.func.isRequired,
+    setErrors: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
+    setSearchText: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
@@ -424,7 +446,6 @@ function mapDispatchToProps() {
     return {
         setCRUDActionNone,
         setCRUDActionInserting,
-        setCRUDActionEditing,
         setCRUDActionSelected,
         insertData,
         updateData,
@@ -432,7 +453,8 @@ function mapDispatchToProps() {
         cancelInsert,
         cancelUpdate,
         setErrors,
-        clearErrors
+        clearErrors,
+        setSearchText
     }
 }
 

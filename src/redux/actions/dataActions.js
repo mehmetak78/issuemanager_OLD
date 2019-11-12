@@ -2,7 +2,6 @@ import {
     SET_LOADING,
     CRUD_NONE,
     CRUD_INSERTING,
-    CRUD_EDITING,
     CRUD_SELECTED,
     SET_PATHS,
     SET_FORM_DATA,
@@ -11,8 +10,14 @@ import {
     UPDATE_DATA,
     CANCEL_INSERT,
     CANCEL_UPDATE,
-    CLEAR_FORM, SET_VALIDATIONS, CLEAR_VALIDATIONS, ADD_ERROR, CLEAR_ERRORS, SET_ERRORS,
-
+    CLEAR_FORM,
+    SET_VALIDATIONS,
+    CLEAR_VALIDATIONS,
+    ADD_ERROR,
+    CLEAR_ERRORS,
+    SET_ERRORS,
+    CRUD_INSERT_EDITING,
+    CRUD_UPDATE_EDITING,
 } from './actionTypes';
 
 import {insertDB, updateDB, deleteDB} from "../../db";
@@ -36,9 +41,16 @@ export const setCRUDActionInserting = (message) => {
         payload: message
     }
 };
-export const setCRUDActionEditing = (message) => {
+
+export const setCRUDActionInsertEditing = (message) => {
     return {
-        type: CRUD_EDITING,
+        type: CRUD_INSERT_EDITING,
+        payload: message
+    }
+};
+export const setCRUDActionUpdateEditing = (message) => {
+    return {
+        type: CRUD_UPDATE_EDITING,
         payload: message
     }
 };
@@ -49,11 +61,12 @@ export const setCRUDActionSelected = (message) => {
     }
 };
 
-export const setPaths = (formPath, dataPath) => {
+export const setPaths = (formPath, upFormPath, dataPath) => {
     return {
         type: SET_PATHS,
         payload: {
             formPath: formPath,
+            upFormPath: upFormPath,
             dataPath: dataPath
         }
     }
@@ -61,20 +74,20 @@ export const setPaths = (formPath, dataPath) => {
 
 export const clearForm = () => {
     return {
-        type: CLEAR_FORM ,
+        type: CLEAR_FORM,
         payload: null
     }
 };
 
 export const setValidations = (validations) => {
     return {
-        type: SET_VALIDATIONS ,
+        type: SET_VALIDATIONS,
         payload: validations
     }
 };
 export const clearValidations = () => {
     return {
-        type: CLEAR_VALIDATIONS ,
+        type: CLEAR_VALIDATIONS,
         payload: null
     }
 };
@@ -117,8 +130,6 @@ export const cancelInsert = () => {
         payload: null
     }
 };
-
-
 
 
 export const cancelUpdate = () => {

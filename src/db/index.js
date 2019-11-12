@@ -1,8 +1,8 @@
 import {sendError} from "../utils/errorUtil";
 
-export const getData = async (path) => {
+export const getData = async (path, searchText) => {
     try {
-        const res = await fetch(path);
+        const res = await fetch(`${path}?q=${searchText}`);
         if (res.ok) {
             const resData = await res.json();
             return {data: resData};

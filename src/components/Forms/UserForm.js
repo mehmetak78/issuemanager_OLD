@@ -10,27 +10,30 @@ import {
     setInitialFormData,
     setCRUDActionInserting,
     setCRUDActionSelected,
-    setCRUDActionEditing,
+    setCRUDActionInsertEditing,
+    setCRUDActionUpdateEditing,
     clearForm,
     addError,
-    clearErrors
+    clearErrors, setCRUDActionNone
 } from "../../redux/actions/dataActions";
 import {
-    CRUD_EDITING,
+    CRUD_INSERT_EDITING,
     CRUD_NONE,
-    CRUD_SELECTED,
+    CRUD_SELECTED, CRUD_UPDATE_EDITING,
 } from "../../redux/actions/actionTypes";
 import {validateField} from "../../utils/validationUtil";
+import PropTypes from "prop-types";
 
 const UserForm = (props) => {
 
     const formPath = "/user";
+    const upFormPath = "/users";
     const dataPath = "/users";
-    const formName = "User";
+    const formNameAdd = "Add User";
+    const formNameEdit = "Edit User";
 
     const {formData, formErrors} = props.data;
     const {loading} = props.layout;
-
 
     const fields = {
         userName: {
@@ -89,14 +92,14 @@ const UserForm = (props) => {
         validations[key] = {
             name: fields[key].name,
             label: fields[key].label,
-            type: fields[key].type, ...fields[key].validation
+       //     type: fields[key].type,
+            ...fields[key].validation
         };
     });
 
     useEffect(() => {
-        props.setPaths(formPath, dataPath);
+        props.setPaths(formPath, upFormPath, dataPath);
         props.setValidations(validations);
-
         // eslint-disable-next-line
     }, []);
     useEffect(() => {
@@ -108,7 +111,7 @@ const UserForm = (props) => {
         // eslint-disable-next-line
     }, []);
     useEffect(() => {
-        const {setFormData, setInitialFormData, setCRUDActionInserting} = props;
+        const {setFormData, setInitialFormData, setCRUDActionNone} = props;
         const {crudState} = props.data;
 
         if (crudState === CRUD_NONE) {
@@ -118,7 +121,7 @@ const UserForm = (props) => {
             fields["id"] = null;
             setFormData(fields);
             setInitialFormData(fields);
-            setCRUDActionInserting();
+            setCRUDActionNone();
         }
         if (crudState === CRUD_SELECTED) {
             setInitialFormData(props.data.formData);
@@ -127,9 +130,15 @@ const UserForm = (props) => {
     }, [props.data.crudState]);
 
     const handleChange = (e) => {
-        if (props.data.crudState !== CRUD_EDITING) {
-            props.setCRUDActionEditing();
+        if (props.data.crudState !== CRUD_INSERT_EDITING && props.data.crudState !== CRUD_UPDATE_EDITING) {
+            if (formData && formData.id) {
+                props.setCRUDActionUpdateEditing();
+            } else {
+                console.log("setCRUDActionInsertEditing")
+                props.setCRUDActionInsertEditing();
+            }
         }
+
         const field = fields[e.target.name];
         const error = validateField(validations[field.name], e.target.value);
         if (error) {
@@ -144,9 +153,8 @@ const UserForm = (props) => {
         formData ?
             <FormMAK
                 type={NO_BUTTON}
-                label={formName}
+                label={props.data.crudState===CRUD_SELECTED || props.data.crudState===CRUD_UPDATE_EDITING ? formNameEdit : formNameAdd}
                 loading={loading}>
-
                 <TextFieldMAK
                     errorMessage={formErrors ? formErrors[fields.userName.name] : null}
                     field={fields.userName}
@@ -165,6 +173,23 @@ const UserForm = (props) => {
     );
 };
 
+UserForm.propTypes = {
+    layout: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    setValidations: PropTypes.func.isRequired,
+    clearValidations: PropTypes.func.isRequired,
+    setFormData: PropTypes.func.isRequired,
+    setInitialFormData: PropTypes.func.isRequired,
+    setCRUDActionNone: PropTypes.func.isRequired,
+    setCRUDActionInserting: PropTypes.func.isRequired,
+    setCRUDActionSelected: PropTypes.func.isRequired,
+    setCRUDActionInsertEditing: PropTypes.func.isRequired,
+    setCRUDActionUpdateEditing: PropTypes.func.isRequired,
+    clearForm: PropTypes.func.isRequired,
+    addError: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => (
     {
         layout: state.layout,
@@ -179,9 +204,11 @@ function mapDispatchToProps() {
         clearValidations,
         setFormData,
         setInitialFormData,
+        setCRUDActionNone,
         setCRUDActionInserting,
         setCRUDActionSelected,
-        setCRUDActionEditing,
+        setCRUDActionInsertEditing,
+        setCRUDActionUpdateEditing,
         clearForm,
         addError,
         clearErrors

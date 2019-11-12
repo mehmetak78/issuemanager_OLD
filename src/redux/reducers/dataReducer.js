@@ -1,7 +1,6 @@
 import {
     CRUD_NONE,
     CRUD_INSERTING,
-    CRUD_EDITING,
     CRUD_SELECTED,
     SET_FORM_DATA,
     SET_PATHS,
@@ -9,7 +8,15 @@ import {
     INSERT_DATA,
     UPDATE_DATA,
     CANCEL_INSERT,
-    CANCEL_UPDATE, CLEAR_FORM, SET_VALIDATIONS, CLEAR_VALIDATIONS, SET_ERRORS, CLEAR_ERRORS, ADD_ERROR
+    CANCEL_UPDATE,
+    CLEAR_FORM,
+    SET_VALIDATIONS,
+    CLEAR_VALIDATIONS,
+    SET_ERRORS,
+    CLEAR_ERRORS,
+    ADD_ERROR,
+    CRUD_INSERT_EDITING,
+    CRUD_UPDATE_EDITING,
 } from "../actions/actionTypes";
 
 
@@ -17,6 +24,7 @@ const initialState =
     {
         crudState: CRUD_NONE,
         formPath: "",
+        upFormPath: "",
         dataPath: "",
         initialFormData: null,
         formData: null,
@@ -30,7 +38,8 @@ export default (state = initialState, action) => {
             return initialState;
         case CRUD_NONE:
         case CRUD_INSERTING:
-        case CRUD_EDITING:
+        case CRUD_INSERT_EDITING:
+        case CRUD_UPDATE_EDITING:
         case CRUD_SELECTED:
             return {
                 ...state,

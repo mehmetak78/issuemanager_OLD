@@ -1,6 +1,8 @@
 import {
     SET_STATUS_MESSAGE,
-    SET_LOADING
+    SET_LOADING,
+    SET_SEARCH_TEXT,
+    CLEAR_SEARCH_TEXT,
 } from './actionTypes';
 
 export const setStatusMessage = (message) =>  {
@@ -17,3 +19,15 @@ export const setLoading = (val) =>  {
     }
 };
 
+export const setSearchText = (text) => {
+    return {
+        type: SET_SEARCH_TEXT,
+        payload: text
+    }
+};
+export const clearSearchText = () => {
+    return {
+        type: CLEAR_SEARCH_TEXT,
+        payload: null
+    }
+};
