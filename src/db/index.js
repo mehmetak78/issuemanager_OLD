@@ -4,11 +4,12 @@ const MAX_ROW_COUNT = 100;
 
 export const getData = async (path, searchText) => {
     try {
-        const res = await fetch(`${path}?q=${searchText}&_limit=${MAX_ROW_COUNT}`);
+        //select MAX_ROW_COUNT of data for each page. set age number for getting next page.
+        const res = await fetch(`${path}?q=${searchText}&_page=1&_limit=${MAX_ROW_COUNT}`);
 
         if (res.ok) {
             const resData = await res.json();
-            console.log(res.headers["X-Total-Count"]);
+            console.log(res.headers["x-total-count"]);
             return {data: resData};
         } else {
             return {error: sendError(res, res.status, res.statusText)};
