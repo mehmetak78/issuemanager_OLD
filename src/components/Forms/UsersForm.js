@@ -89,7 +89,6 @@ const UsersForm = props => {
 
     useEffect(() => {
         return () => {
-            console.log("props.clearSearchText();")
             props.clearSearchText();
             //            props.clearForm();        // Don't call if going to User by clickking the row
 

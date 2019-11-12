@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d2573292-3164-44db-8268-a23878944f22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Forms/UserForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UserForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/TopMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/dataActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/dataActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/layoutActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/layoutActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/dataReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/dataReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/layoutReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/layoutReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572677850915</updated>
       <workItem from="1572677852025" duration="80575000" />
-      <workItem from="1573142126924" duration="102686000" />
+      <workItem from="1573142126924" duration="102863000" />
     </task>
     <task id="LOCAL-00001" summary="After Form Structure">
       <created>1572781788413</created>
@@ -234,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573585262923</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Search Completed">
+      <created>1573593004946</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1573593004946</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +258,8 @@
     <MESSAGE value="TableSort" />
     <MESSAGE value="Trying Validation" />
     <MESSAGE value="Validation Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Validation Complete" />
+    <MESSAGE value="Search Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search Completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
