@@ -19,10 +19,13 @@ import {
 import {
     CRUD_INSERT_EDITING,
     CRUD_NONE,
-    CRUD_SELECTED, CRUD_UPDATE_EDITING,
+    CRUD_SELECTED,
+    CRUD_UPDATE_EDITING,
 } from "../../redux/actions/actionTypes";
 import {validateField} from "../../utils/validationUtil";
 import PropTypes from "prop-types";
+
+
 
 const UserForm = (props) => {
 
@@ -92,7 +95,6 @@ const UserForm = (props) => {
         validations[key] = {
             name: fields[key].name,
             label: fields[key].label,
-       //     type: fields[key].type,
             ...fields[key].validation
         };
     });
@@ -134,7 +136,6 @@ const UserForm = (props) => {
             if (formData && formData.id) {
                 props.setCRUDActionUpdateEditing();
             } else {
-                console.log("setCRUDActionInsertEditing")
                 props.setCRUDActionInsertEditing();
             }
         }

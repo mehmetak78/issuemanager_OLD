@@ -22,13 +22,13 @@ const SubmitButtonMAK = props => {
             disabled={props.disabled}
             className={classes.button}
         >
-            {props.label}
+            {props.labelForSubmit}
         </Button>
     );
 };
 
 SubmitButtonMAK.propTypes = {
-    label: PropTypes.string.isRequired,
+    labelForSubmit: PropTypes.string.isRequired,
 };
 
 SubmitButtonMAK.defaultProps = {

@@ -2,6 +2,7 @@ import isEmail from 'validator/lib/isEmail';
 import isURL from 'validator/lib/isURL';
 
 export const validateForm = (validations, formData) => {
+
     let errors = null;
     Object.keys(validations).forEach(fieldName => {
         const error = validateField(validations[fieldName],formData[fieldName]);

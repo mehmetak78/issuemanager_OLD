@@ -33,7 +33,7 @@ const BottomBar = (props) => {
                 <Typography variant="body1" display="inline" className={classes.noMarginPadding}>crudSatate:</Typography>{crudState}{" "}
                 <Typography variant="body1" display="inline" className={classes.noMarginPadding}>formPath:</Typography>{formPath}{" "}
                 <Typography variant="body1" display="inline" className={classes.noMarginPadding}>dataPath:</Typography>{dataPath}{" "}
-                <Typography variant="body1" display="inline" className={classes.noMarginPadding}>statusMessage:</Typography>{statusMessage}{" "}
+                <Typography variant="body1" display="inline" className={classes.noMarginPadding}></Typography>{statusMessage}{" "}
             </Typography>
         </div>
     );

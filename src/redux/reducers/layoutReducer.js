@@ -10,6 +10,7 @@ const initialState =
         settings: {},
         searchText: "",
         statusMessage: "No Message",
+        loading: false
     };
 
 export default (state = initialState, action) => {

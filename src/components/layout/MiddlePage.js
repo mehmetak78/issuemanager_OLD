@@ -6,17 +6,20 @@ import UserForm from "../Forms/UserForm";
 import Admin from "../pages/Admin";
 import Settings from "../pages/Settings";
 import UsersForm from "../Forms/UsersForm";
+import LoginForm from "../Forms/LoginForm";
+import PrivateRoute from "../routing/PrivateRoute";
 
 
 const MiddlePage = props => {
     return (
         <Switch>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/home" component={Home}/>
+            <Route exact path="/Login" component={LoginForm}/>
             <Route exact path="/settings" component={Settings}/>
-            <Route exact path="/admin" component={Admin}/>
-            <Route exact path="/users" component={UsersForm}/>
-            <Route exact path="/user" component={UserForm}/>
+            <PrivateRoute exact path="/home" component={Home}/>
+            <PrivateRoute exact path="/admin" component={Admin}/>
+            <PrivateRoute exact path="/users" component={UsersForm}/>
+            <PrivateRoute exact path="/user" component={UserForm}/>
             <Route component={PageNotFound}/>
         </Switch>
     );

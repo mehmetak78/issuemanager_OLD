@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Grid, makeStyles} from "@material-ui/core";
 
 
-import AddResetButtonsMAK from "./AddResetButtonsMAK";
+import SubmitResetButtonsMAK from "./SubmitResetButtonsMAK";
 import SubmitButtonMAK from "./SubmitButtonMAK";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +12,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CircularIndeterminate from "./CircularIndeterminate";
 
 export const NO_BUTTON = "ADD_RESET";
-export const ADD_RESET_BUTTON = "ADD_RESET";
+export const ADD_RESET_BUTTON = "ADD_RESET_BUTTON";
+export const LOGIN_BUTTON = "LOGIN_CANCEL_BUTTON";
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,9 +30,11 @@ const action = (type, disabled) => {
         case NO_BUTTON :
             return null;
         case ADD_RESET_BUTTON :
-            return <AddResetButtonsMAK labelForAdd="Save" labelForReset="Cancel" disabled={disabled}/>;
+            return <SubmitResetButtonsMAK labelForSubmit="Add" labelForReset="Cancel" disabled={disabled}/>;
+        case LOGIN_BUTTON :
+            return <SubmitButtonMAK labelForSubmit="Login" disabled={disabled}/>;
         default:
-            return <SubmitButtonMAK label="Add"/>
+            return <SubmitButtonMAK labelForSubmit="Submit" disabled={disabled}/>;
     }
 };
 

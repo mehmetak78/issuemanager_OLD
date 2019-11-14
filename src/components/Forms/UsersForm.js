@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
 
 const UsersForm = props => {
     const formPath = "/user";
+    const upFormPath = null;
     const dataPath = "/users";
     const formName = "Users";
 
@@ -80,7 +81,7 @@ const UsersForm = props => {
         };
 
         props.setCRUDActionNone();
-        props.setPaths(formPath,dataPath);
+        props.setPaths(formPath,upFormPath,dataPath);
         asyncFunction();
 
 

@@ -5,7 +5,7 @@ import SubmitButtonMAK from "./SubmitButtonMAK";
 import ResetButtonMAK from "./ResetButtonMAK";
 
 
-const AddResetButtonsMAK = props => {
+const SubmitResetButtonsMAK = props => {
     return (
         <Grid
             container
@@ -15,7 +15,7 @@ const AddResetButtonsMAK = props => {
             spacing={1}
         >
             <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
-                <SubmitButtonMAK label={props.labelForAdd} disabled={props.disabled}/>
+                <SubmitButtonMAK label={props.labelForSubmit} disabled={props.disabled}/>
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={4} xl={3}>
                 <ResetButtonMAK label={props.labelForReset} disabled={props.disabled}/>
@@ -24,13 +24,13 @@ const AddResetButtonsMAK = props => {
     );
 };
 
-AddResetButtonsMAK.propTypes = {
-    labelForAdd: PropTypes.string.isRequired,
+SubmitResetButtonsMAK.propTypes = {
+    labelForSubmit: PropTypes.string.isRequired,
     labelForReset: PropTypes.string.isRequired,
 };
 
-AddResetButtonsMAK.defaultProps = {
+SubmitResetButtonsMAK.defaultProps = {
     disabled: false
 };
 
-export default AddResetButtonsMAK;
+export default SubmitResetButtonsMAK;

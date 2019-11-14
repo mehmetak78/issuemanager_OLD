@@ -127,9 +127,6 @@ const TopMenu = props => {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-//    const [searchEnabled, setSearchEnabled] = useState(true);
-
-
     const searchText = useRef('');
 
     const {
@@ -149,7 +146,9 @@ const TopMenu = props => {
 
     const handleUpForm = (e) => {
         setCRUDActionNone();
-        props.history.push(upFormPath);
+        if (upFormPath) {
+            props.history.push(upFormPath);
+        }
     };
 
     const handleAdd = (e) => {
@@ -163,7 +162,7 @@ const TopMenu = props => {
     const handleSave = (e) => {
         e.preventDefault();
 
-        const errors = validateForm(props.data.validations, formData);
+        const errors = validateForm(props.data.validations, formData, formPath);
         if (errors) {
             props.setErrors(errors);
         } else {
@@ -188,15 +187,15 @@ const TopMenu = props => {
         } else {
             cancelInsert();
         }
-        //setSearchEnabled(true);
     };
 
     const handleSearchKeyPressed = (e) => {
-        //   e.preventDefault();
         if (e.charCode === 13) { // enter key pressed
             e.preventDefault();
             props.setSearchText(searchText.current.value);
-            props.history.push(upFormPath);
+            if (upFormPath) {
+                props.history.push(upFormPath);
+            }
         }
 
     };
@@ -204,8 +203,6 @@ const TopMenu = props => {
     const insertButtons = () => {
         const {crudState, formPath} = props.data;
 
-
-        // eslint-disable-next-line default-case
         switch (crudState) {
             case CRUD_NONE:
                 return (
@@ -242,6 +239,8 @@ const TopMenu = props => {
                         </IconButton>
                     </div>
                 );
+            default:
+                return null;
         }
     };
 

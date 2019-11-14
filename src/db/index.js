@@ -9,7 +9,6 @@ export const getData = async (path, searchText) => {
 
         if (res.ok) {
             const resData = await res.json();
-            console.log(res.headers["x-total-count"]);
             return {data: resData};
         } else {
             return {error: sendError(res, res.status, res.statusText)};
