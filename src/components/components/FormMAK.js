@@ -17,72 +17,87 @@ export const LOGIN_BUTTON = "LOGIN_CANCEL_BUTTON";
 
 
 const useStyles = makeStyles(theme => ({
-    card: {
-        height: "100%",
-        width: "100%",
-        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.25)",
-        backgroundColor: "white",
-        textDecoration: "none",
-        //border: "1px solid #eaeaea",
-        borderRadius: "10px"
+  card: {
+    height: "100%",
+    width: "100%",
+    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.25)",
+    backgroundColor: "white",
+    textDecoration: "none",
+    border: "1px solid #eaeaea",
+    borderRadius: "10px",
+    animation: `$cardAppear 1000ms ${theme.transitions.easing.easeInOut}`,
+    "&:hover, &:focus, &:active": {
+      borderColor: "#0070f3"
+    }
+
+  },
+  cardAction: {
+    padding: theme.spacing(3),
+  },
+  "@keyframes cardAppear": {
+    "0%": {
+      opacity: 0,
+      transform: "translateY(3rem)"
     },
-    cardAction: {
-        padding: theme.spacing(3),
-    },
+    "100%": {
+      opacity: 1,
+      transform: "translateY(0)"
+    }
+  },
 
 }));
 
 const action = (type, disabled) => {
-    switch (type) {
-        case NO_BUTTON :
-            return null;
-        case ADD_RESET_BUTTON :
-            return <SubmitResetButtonsMAK labelForSubmit="Add" labelForReset="Cancel" disabled={disabled}/>;
-        case LOGIN_BUTTON :
-            return <SubmitButtonMAK labelForSubmit="Login" disabled={disabled}/>;
-        default:
-            return <SubmitButtonMAK labelForSubmit="Submit" disabled={disabled}/>;
-    }
+  switch (type) {
+    case NO_BUTTON :
+      return null;
+    case ADD_RESET_BUTTON :
+      return <SubmitResetButtonsMAK labelForSubmit="Add" labelForReset="Cancel" disabled={disabled}/>;
+    case LOGIN_BUTTON :
+      return <SubmitButtonMAK labelForSubmit="Login" disabled={disabled}/>;
+    default:
+      return <SubmitButtonMAK labelForSubmit="Submit" disabled={disabled}/>;
+  }
 };
 
 const FormMAK = props => {
-    const classes = useStyles();
-    return (
-        <Card className={classes.card}>
-            <form onSubmit={props.handleSubmit} onReset={props.handleReset}>
-                <CardContent>
-                    <Typography variant="h1" className={classes.label}>
-                        {props.label}
-                    </Typography>
-                    <Grid
-                        container
-                        direction="row"
-                        justify="center"
-                        alignItems="center"
-                        spacing={1}
-                    >
-                        {props.children}
-                    </Grid>
-                </CardContent>
-                <CardActions className={classes.cardAction}>
-                    {action(props.type, props.loading)}
-                </CardActions>
-                {props.loading ? <CircularIndeterminate/> : null}
-            </form>
-        </Card>
+  const classes = useStyles();
+  return (
+    <Card className={classes.card} style={{width: props.width, height: props.height}}>
+      <form onSubmit={props.handleSubmit} onReset={props.handleReset}>
+        <CardContent>
+          <Typography variant="h1" className={classes.label}>
+            {props.label}
+          </Typography>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={1}
+          >
+            {props.children}
+          </Grid>
+        </CardContent>
+        <CardActions className={classes.cardAction}>
+          {action(props.type, props.loading)}
+        </CardActions>
+        {props.loading ? <CircularIndeterminate/> : null}
+      </form>
+    </Card>
 
-    );
+  );
 };
 
 FormMAK.propTypes = {
-    handleSubmit: PropTypes.func,
-    handleReset: PropTypes.func,
-    type: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func,
+  handleReset: PropTypes.func,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 FormMAK.defaultProps = {
-    loading: false
+  loading: false
 };
 
 export default FormMAK;

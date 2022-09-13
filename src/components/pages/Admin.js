@@ -18,7 +18,8 @@ import {connect} from "react-redux";
 
 const useStyles = makeStyles(theme => ({
     card: {
-        height: "100%"
+        height: "100%",
+        width: "100%"
     },
     navlink: {
         textDecoration: "none",

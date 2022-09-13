@@ -11,6 +11,9 @@ const useStyles = makeStyles(theme => ({
    //     border: "2px red solid",
         height: "calc(100% - 50px)",
         textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
 
     }
 }));

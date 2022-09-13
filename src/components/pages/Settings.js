@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
     card: {
-        height: "100%"
+        height: "100%",
+        width: "100%"
     },
 }));
 
