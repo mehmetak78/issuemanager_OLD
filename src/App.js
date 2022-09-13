@@ -17,7 +17,6 @@ import BottomBar from "./components/layout/BottomBar";
 
 function App() {
     const theme = createMuiTheme({
-
                                      palette: {
                                          type: "light",
                                          primary: {
