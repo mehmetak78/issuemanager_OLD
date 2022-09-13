@@ -119,7 +119,7 @@ const LoginForm = (props) => {
 
     return (
         <FormMAK
-            width={"75%"}
+            width={"50%"}
             height={"50%"}
             handleSubmit={handleSubmit}
             type={LOGIN_BUTTON}
