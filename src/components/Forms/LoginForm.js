@@ -20,7 +20,7 @@ const LoginForm = (props) => {
 
     const formPath = "/login";
     const upFormPath = null;
-    const dataPath = null;
+    const dataPath = "/users";
     const formName = "Login";
 
     const [errors, setErrors] = useState(null);
@@ -112,7 +112,7 @@ const LoginForm = (props) => {
         }
         else {
             console.log("handleSubmit");
-            props.loginUser(user.userName);
+            props.loginUser(dataPath, user);
             props.history.push("/");
         }
     };

@@ -2,27 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2573292-3164-44db-8268-a23878944f22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Forms/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/routing/PrivateRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/actions/authActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/authReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Forms/CategoriesForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Forms/CategoryForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Forms/WorkflowTypeForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Forms/WorkflowTypesForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Forms/UserForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UserForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/AddResetButtonsMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/SubmitResetButtonsMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/FormMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/FormMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/SubmitButtonMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/SubmitButtonMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/BottomBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/BottomBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MiddlePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layout/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/TopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/layoutReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/layoutReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/validationUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validationUtil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/authReducer.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,26 +33,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1T39Kq6B77SmXWl66Nw5WLZIWha" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="node" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/Shared/Mehmet_OLD/React_OLDER/issuemanager",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Forms" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/redux/actions" />
       <recent name="$PROJECT_DIR$/src/redux/reducers" />
-      <recent name="$PROJECT_DIR$/src/components/Forms" />
       <recent name="$PROJECT_DIR$/src/components/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -67,18 +67,6 @@
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/Forms" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -95,6 +83,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -106,7 +95,25 @@
       <option name="presentableId" value="Default" />
       <updated>1572677850915</updated>
       <workItem from="1572677852025" duration="80575000" />
-      <workItem from="1573142126924" duration="115910000" />
+      <workItem from="1573142126924" duration="125034000" />
+      <workItem from="1574094855885" duration="888000" />
+      <workItem from="1580048509896" duration="624000" />
+      <workItem from="1580049158434" duration="568000" />
+      <workItem from="1580050752663" duration="6774000" />
+      <workItem from="1588506550664" duration="783000" />
+      <workItem from="1588581064308" duration="24000" />
+      <workItem from="1590740191888" duration="4870000" />
+      <workItem from="1590850046006" duration="1283000" />
+      <workItem from="1592857643751" duration="111000" />
+      <workItem from="1592858263404" duration="1867000" />
+      <workItem from="1593876196618" duration="692000" />
+      <workItem from="1621021365476" duration="1739000" />
+      <workItem from="1621368112327" duration="10000" />
+      <workItem from="1622411623335" duration="63000" />
+      <workItem from="1622997576680" duration="170000" />
+      <workItem from="1642864447999" duration="223000" />
+      <workItem from="1644164594580" duration="146000" />
+      <workItem from="1663098432451" duration="329000" />
     </task>
     <task id="LOCAL-00001" summary="After Form Structure">
       <created>1572781788413</created>
@@ -269,20 +276,25 @@
       <option name="project" value="LOCAL" />
       <updated>1573594739354</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="PrivateRoute, Login">
+      <created>1573763481242</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1573763481242</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -297,7 +309,8 @@
     <MESSAGE value="Trying Validation" />
     <MESSAGE value="Validation Complete" />
     <MESSAGE value="Search Completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search Completed" />
+    <MESSAGE value="PrivateRoute, Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="PrivateRoute, Login" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

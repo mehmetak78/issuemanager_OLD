@@ -33,6 +33,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import UpIcon from '@material-ui/icons/ArrowUpward';
 import SettingsIcon from '@material-ui/icons/Settings';
+import LogoutIcon from '@material-ui/icons/MeetingRoom';
+import LoginIcon from '@material-ui/icons/LockOpen';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 import {
@@ -51,8 +53,13 @@ import {
     setSearchText
 } from "../../redux/actions/layoutActions";
 import {
+    logoutUser
+} from "../../redux/actions/authActions";
+import {
     CRUD_NONE,
-    CRUD_SELECTED, CRUD_UPDATE_EDITING, CRUD_INSERT_EDITING
+    CRUD_SELECTED,
+    CRUD_UPDATE_EDITING,
+    CRUD_INSERT_EDITING
 } from '../../redux/actions/actionTypes';
 import {validateForm} from "../../utils/validationUtil";
 
@@ -262,7 +269,22 @@ const TopMenu = props => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const handleLogout = event => {
+        event.preventDefault();
+        props.logoutUser();
+        handleMenuClose();
+        props.history.push("/home");
+    };
+    const handleLogin = event => {
+        event.preventDefault();
+        handleMenuClose();
+        props.history.push("/login");
+    };
+
     const menuId = 'primary-search-account-menu';
+
+    const {isAuthenticated}= props.auth;
+
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -275,6 +297,18 @@ const TopMenu = props => {
         >
 
             <List>
+
+                {isAuthenticated ?
+                    <ListItem button key={"Logout"} name={"Logout"} onClick={handleLogout}>
+                        <ListItemIcon><LogoutIcon color="primary"/></ListItemIcon>
+                        <ListItemText primary="Logout"/>
+                    </ListItem>
+                    :
+                    <ListItem button key={"Login"} name={"Login"} onClick={handleLogin}>
+                        <ListItemIcon><LoginIcon color="primary"/></ListItemIcon>
+                        <ListItemText primary="Login"/>
+                    </ListItem>
+                }
                 <NavLink to="/settings" className={classes.navlink}>
                     <ListItem button key={"SettingsPage"} name={"SettingsPage"} onClick={handleMenuClose}>
                         <ListItemIcon><SettingsIcon color="primary"/></ListItemIcon>
@@ -437,6 +471,7 @@ TopMenu.propTypes = {
 
 const mapStateToProps = state => (
     {
+        auth: state.auth,
         data: state.data
     }
 );
@@ -453,7 +488,8 @@ function mapDispatchToProps() {
         cancelUpdate,
         setErrors,
         clearErrors,
-        setSearchText
+        setSearchText,
+        logoutUser
     }
 }
 

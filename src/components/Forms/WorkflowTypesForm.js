@@ -29,11 +29,11 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const UsersForm = props => {
-    const formPath = "/user";
+const WorkflowTypesForm = props => {
+    const formPath = "/workflowtype";
     const upFormPath = null;
-    const dataPath = "/users";
-    const formName = "Users";
+    const dataPath = "/workflowtypes";
+    const formName = "Workflow Types";
 
     const classes = useStyles();
     const [rows, setRows] = useState([]);
@@ -41,29 +41,20 @@ const UsersForm = props => {
     const columns = [
 
         {
-            name: "userName",
-            caption: "User Name",
-            align: "left",
-            numeric: false
+            name: "workflowTypeName",
+            caption: "Workflow Type Name",
+            align: "left"
         },
         {
-            name: "firstName",
-            caption: "First Name",
-            align: "left",
-            numeric: false
-        },
-        {
-            name: "lastName",
-            caption: "Last Name",
-            align: "left",
-            numeric: false
+            name: "workflowTypeDescription",
+            caption: "Workflow Type  Description",
+            align: "left"
         }
     ];
 
     useEffect(() => {
         props.setCRUDActionNone();
         props.setPaths(formPath,dataPath);
-
         // eslint-disable-next-line
     }, []);
 
@@ -137,4 +128,4 @@ function mapDispatchToProps() {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(UsersForm);
+export default connect(mapStateToProps, mapDispatchToProps())(WorkflowTypesForm);

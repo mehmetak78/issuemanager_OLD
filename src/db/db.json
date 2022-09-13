@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "userName": "mehmet2@hotmail.com",
+      "userName": "mehmetak78@hotmail.com",
       "firstName": "Mehmet",
       "lastName": "Akk"
     },
@@ -13,28 +13,34 @@
       "lastName": "Akksdfsd"
     },
     {
-      "userName": "Masdf@asdf.com",
+      "userName": "asdf@asdf.com",
       "firstName": "sdfgsdf",
       "lastName": "sdfgdsfgasdfsadffdsf",
       "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "categoryName": "Yasal Zorunluluk",
+      "categoryDescription": "Yasal zorunlu talepler",
+      "id": 1
     },
     {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdf",
-      "lastName": "asdf",
-      "id": 4
+      "categoryName": "Sistemsel Zorunlulukdsfsdf",
+      "categoryDescription": "Sistemsel zorunlu taleplerd",
+      "id": 2
+    }
+  ],
+  "workflowtypes": [
+    {
+      "workflowTypeName": "Yazılım Talebi",
+      "workflowTypeDescription": "Yazılım taleplerinin girişi için kullanılır",
+      "id": 1
     },
     {
-      "userName": "asdf@asdf.com",
-      "firstName": "asdff",
-      "lastName": "sfdsafsddfgsdfgsdgf",
-      "id": 5
-    },
-    {
-      "userName": "asdf@asdf.com",
-      "firstName": "sdf",
-      "lastName": "vxcv",
-      "id": 6
+      "workflowTypeName": "dsf",
+      "workflowTypeDescription": "sdf",
+      "id": 2
     }
   ]
 }

@@ -1,11 +1,17 @@
 import {
-    LOGIN_USER,
+    LOGIN_USER, LOGOUT_USER,
 } from "../actions/actionTypes";
 
 const initialState =
     {
-        isAuthenticated: false,
-        currentUser:null
+        isAuthenticated: true,
+        currentUser:
+            {
+                "id": 1,
+                "userName": "mehmetak78@hotmail.com",
+                "firstName": "Mehmet",
+                "lastName": "Ak"
+            }
     };
 
 export default (state = initialState, action) => {
@@ -15,6 +21,12 @@ export default (state = initialState, action) => {
                 ...state,
                 isAuthenticated: true,
                 currentUser: action.payload
+            };
+        case LOGOUT_USER:
+            return {
+                ...state,
+                isAuthenticated: false,
+                currentUser: null
             };
         default:
             return state;

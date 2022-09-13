@@ -29,11 +29,11 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const UsersForm = props => {
-    const formPath = "/user";
+const CategoriesForm = props => {
+    const formPath = "/category";
     const upFormPath = null;
-    const dataPath = "/users";
-    const formName = "Users";
+    const dataPath = "/categories";
+    const formName = "Categories";
 
     const classes = useStyles();
     const [rows, setRows] = useState([]);
@@ -41,22 +41,14 @@ const UsersForm = props => {
     const columns = [
 
         {
-            name: "userName",
-            caption: "User Name",
-            align: "left",
-            numeric: false
+            name: "categoryName",
+            caption: "Category Name",
+            align: "left"
         },
         {
-            name: "firstName",
-            caption: "First Name",
-            align: "left",
-            numeric: false
-        },
-        {
-            name: "lastName",
-            caption: "Last Name",
-            align: "left",
-            numeric: false
+            name: "categoryDescription",
+            caption: "Category Description",
+            align: "left"
         }
     ];
 
@@ -137,4 +129,4 @@ function mapDispatchToProps() {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(UsersForm);
+export default connect(mapStateToProps, mapDispatchToProps())(CategoriesForm);
