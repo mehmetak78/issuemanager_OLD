@@ -18,11 +18,18 @@ export const LOGIN_BUTTON = "LOGIN_CANCEL_BUTTON";
 
 const useStyles = makeStyles(theme => ({
     card: {
-        height: "100%"
+        height: "100%",
+        width: "100%",
+        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.25)",
+        backgroundColor: "white",
+        textDecoration: "none",
+        //border: "1px solid #eaeaea",
+        borderRadius: "10px"
     },
     cardAction: {
         padding: theme.spacing(3),
-    }
+    },
+
 }));
 
 const action = (type, disabled) => {
@@ -50,7 +57,7 @@ const FormMAK = props => {
                     <Grid
                         container
                         direction="row"
-                        justify="flex-start"
+                        justify="center"
                         alignItems="center"
                         spacing={1}
                     >
