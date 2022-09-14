@@ -21,11 +21,32 @@ import {
 } from "../../redux/actions/layoutActions";
 
 import {connect} from "react-redux";
+import FormMAK, {LOGIN_BUTTON, NO_BUTTON} from "../components/FormMAK";
 
 
 const useStyles = makeStyles(theme => ({
     card: {
-        height: "100%"
+        height: "75%",
+        width: "75%",
+        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.25)",
+        backgroundColor: "white",
+        textDecoration: "none",
+        border: "1px solid #eaeaea",
+        borderRadius: "10px",
+        animation: `$cardAppear 1000ms ${theme.transitions.easing.easeInOut}`,
+        "&:hover, &:focus, &:active": {
+            borderColor: "#0070f3"
+        }
+    },
+    "@keyframes cardAppear": {
+        "0%": {
+            opacity: 0,
+            transform: "translateY(3rem)"
+        },
+        "100%": {
+            opacity: 1,
+            transform: "translateY(0)"
+        }
     },
 }));
 
@@ -106,15 +127,21 @@ const UsersForm = props => {
     };
 
     return (
-        <Card className={classes.card}>
-            <CardContent>
+      <FormMAK
+        width={"50%"}
+        height={"60%"}
+        type={NO_BUTTON}
+        label={formName}
+        loading={props.loading}>
+          <TableSortMAK rows={rows} columns={columns} dense={true} rowSize={10} handleRowClick={handleRowClick}/>
+          {/*  <CardContent>
                 <Typography variant="h1">
                     {formName}
                 </Typography>
                 <TableSortMAK rows={rows} columns={columns} dense={true} rowSize={10} handleRowClick={handleRowClick}/>
                 {props.loading ? <CircularIndeterminate/> : null}
-            </CardContent>
-        </Card>
+            </CardContent>*/}
+        </FormMAK>
     )
 };
 

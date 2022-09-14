@@ -374,7 +374,7 @@ const TopMenu = props => {
                 <Toolbar>
                     <NavLink to={"home"} className={classes.navlink}>
                         <IconButton
-                            edge="start"
+                            //edge="start"
                             className={classes.menuButton}
                             color="inherit"
                             aria-label="open drawer"

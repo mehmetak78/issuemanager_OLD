@@ -4,12 +4,12 @@ import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     containerMAK: {
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(1),
+   //     marginLeft: theme.spacing(2),
+   //     marginRight: theme.spacing(2),
+   //     marginTop: theme.spacing(2),
+   //     marginBottom: theme.spacing(1),
    //     border: "2px red solid",
-        height: "calc(100% - 50px)",
+        height: "calc(100% - 23px)",
         textAlign: "center",
         display: "flex",
         justifyContent: "center",
