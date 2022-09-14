@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2573292-3164-44db-8268-a23878944f22" name="Default Changelist" comment="Search Completed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/UsersForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components/ContainerMAK.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components/ContainerMAK.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/TopMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/db.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
